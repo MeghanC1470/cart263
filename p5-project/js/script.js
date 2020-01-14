@@ -23,7 +23,7 @@ let food = {
   x: 0,
   y: 0,
   size: 100,
-  color: '#cccc60'
+  color: '#ffff60'
 }
 
 // preload()
@@ -31,9 +31,7 @@ let food = {
 // Description of preload
 
 function preload() {
-createCanvas(windowWidth,windowHeight);
-foodPosition();
-noCursor();
+
 }
 
 
@@ -42,7 +40,9 @@ noCursor();
 // Description of setup
 
 function setup() {
-
+  createCanvas(windowWidth,windowHeight);
+  foodPosition();
+  noCursor();
 }
 
 
@@ -51,5 +51,12 @@ function setup() {
 // Description of draw()
 
 function draw() {
+  background(0);
+  updatePlayer();
 
+  //updatePlayer
+  function updatePlayer(){
+    player.x = mouseX
+    player.y = mouseY
+  }
 }
