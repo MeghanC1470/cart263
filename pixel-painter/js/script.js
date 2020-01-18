@@ -45,11 +45,20 @@ function paint(e) {
   // save that into a variable for clarity.
   let pixel = e.target;
   // Change the background color of the element to white
-  pixel.style.backgroundColor = PAINT_COLOR;
+  pixel.style.backgroundColor = getRandomColor();
   // Set a timeout to call the reset function after a delay
   // When we pass additional parameters (like 'pixel' below) they
   // are passed to the callback function (resetPixel)
   setTimeout(resetPixel, PIXEL_REVERT_DELAY, pixel);
+}
+
+function getRandomColor(){
+  var letters = '0123456789ABCDEF';
+  var color = '#'
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random()*16)];
+  }
+  return color;
 }
 
 // resetPixel
