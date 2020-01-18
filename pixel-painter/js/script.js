@@ -32,6 +32,7 @@ function setup() {
     // Add a mouseover handler to the new element
     pixel.addEventListener('mouseover', paint);
     // Add the element to the body of the page
+    pixel.addEventListener('keydown', rotation)
     document.body.appendChild(pixel);
   }
 }
@@ -50,6 +51,12 @@ function paint(e) {
   // When we pass additional parameters (like 'pixel' below) they
   // are passed to the callback function (resetPixel)
   setTimeout(resetPixel, PIXEL_REVERT_DELAY, pixel);
+}
+
+function rotation(e) {
+  if (e.keyCode === 32) {
+    var
+  }
 }
 
 function getRandomColor(){
