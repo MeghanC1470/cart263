@@ -15,6 +15,9 @@ const PIXEL_REVERT_DELAY = 1000;
 const DEFAULT_COLOR = 'black';
 const PAINT_COLOR = 'white';
 
+let pixel;
+let rotation = 0;
+
 // Set up our starting function for when the page loads
 window.onload = setup;
 
@@ -26,13 +29,13 @@ function setup() {
   // A loop that runs once per pixel we need
   for (let i = 0; i < NUM_PIXELS; i++) {
     // Create a DIV and store it in a variable
-    let pixel = document.createElement('div');
+    pixel = document.createElement('div');
     // Add the 'pixel' class to the new element
     pixel.setAttribute('class', 'pixel');
     // Add a mouseover handler to the new element
     pixel.addEventListener('mouseover', paint);
     // Add the element to the body of the page
-    pixel.addEventListener('keydown', rotation)
+    document.addEventListener('keydown', rotate)
     document.body.appendChild(pixel);
   }
 }
@@ -44,20 +47,28 @@ function setup() {
 function paint(e) {
   // e.target contains the specific element moused over so let's
   // save that into a variable for clarity.
-  let pixel = e.target;
+  let pixTarget = e.target;
   // Change the background color of the element to a random color
-  pixel.style.backgroundColor = getRandomColor();
+  pixTarget.style.backgroundColor = getRandomColor();
   // Set a timeout to call the reset function after a delay
   // When we pass additional parameters (like 'pixel' below) they
   // are passed to the callback function (resetPixel)
-  setTimeout(resetPixel, PIXEL_REVERT_DELAY, pixel);
+  setTimeout(resetPixel, PIXEL_REVERT_DELAY, pixTarget);
 }
 
-function rotation(e) {
-  if (e.keyCode === 32) {
-    var
-  }
-}
+function rotate(e) {
+ let pixel = document.getElementsByClassName("pixel")
+ if (event.keyCode === 39){
+   rotation = rotation + 1;
+ }
+ else if (event.keyCode === 37){
+   rotation = rotation - 1;
+ }
+ for (var i = 0; i < pixel.length; i++) {
+   pixel[i].style.transform = `rotate(${rotation}deg)`;
+ }
+ console.log('spin dammit');
+ }
 
 function getRandomColor(){
   var letters = '0123456789ABCDEF';
