@@ -3,7 +3,7 @@
 /********************************************************************
 
 Pixel painter
-Pippin Barr
+Meghan Cullen
 
 A small DOM-based program for "painting" on div-based pixels.
 
@@ -15,6 +15,7 @@ const PIXEL_REVERT_DELAY = 1000;
 const DEFAULT_COLOR = 'black';
 const PAINT_COLOR = 'white';
 
+// Name our class and set the rotation to 0
 let pixel;
 let rotation = 0;
 
@@ -34,8 +35,9 @@ function setup() {
     pixel.setAttribute('class', 'pixel');
     // Add a mouseover handler to the new element
     pixel.addEventListener('mouseover', paint);
-    // Add the element to the body of the page
+    // Add a rotate handler to the new element
     document.addEventListener('keydown', rotate)
+    // Add the element to the body of the page
     document.body.appendChild(pixel);
   }
 }
@@ -56,23 +58,39 @@ function paint(e) {
   setTimeout(resetPixel, PIXEL_REVERT_DELAY, pixTarget);
 }
 
+// rotate
+//
+// Called by a rotate event handler on each pixel.
+// Makes the pixels and background spin
 function rotate(e) {
+// Call the pixel element by class name
  let pixel = document.getElementsByClassName("pixel")
+// Create an if statement if the right arrow is pressed
  if (event.keyCode === 39){
+// Make the pixels rotate to the right
    rotation = rotation + 1;
  }
+// Create an if statement for the left arrow
  else if (event.keyCode === 37){
+// Make the pixels rotate to the left
    rotation = rotation - 1;
  }
+ // Create an array to that effects all pixels
  for (var i = 0; i < pixel.length; i++) {
+ // Use the .transform to rotate the pixel to a certain degree
    pixel[i].style.transform = `rotate(${rotation}deg)`;
- }
- console.log('spin dammit');
+  }
  }
 
+// function getRandomColor
+//
+// Makes each pixel a different color
 function getRandomColor(){
+//Make seperate variables for the letters and color
   var letters = '0123456789ABCDEF';
   var color = '#'
+//Using math.random, combine the letters and color variable together to
+//randomly select a letter to get a random color
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random()*16)];
   }
