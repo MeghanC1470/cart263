@@ -7,11 +7,12 @@ so the canvas is flush with the top left corner.
 **********************************************/
 
 body {
-  font-family: Helvetica, sans-serif;
+background-color: white;
 }
-.pixel {
+.readacted {
+  color: transparent;
   background-color: black;
-  width: 30px;
-  height: 30px;
-  float: left;
+}
+.revealed {
+  background-color: red;
 }

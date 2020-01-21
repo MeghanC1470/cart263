@@ -10,43 +10,32 @@ author, and this description to match your project!
 
 ******************/
 
-// preload()
-//
-// Description of preload
-window.onload = setup;
-
-function preload() {
-
-}
-
-
-// setup()
-//
-// Description of setup
+$(document).ready(setup);
+  let $divs;
 
 function setup() {
-console.log("Document Loaded");
-for (let i = 0; i < 1000; i++) {
-  let newPixel = document.createElement('div');
-  newPixel.setAttribute('class', 'pixel');
-  //pixelDiv = document.getElementsByTagName ("body");
-  document.body.appendChild(newPixel);
-  newPixel.addEventListener('mouseover', paint);
-}
-}
-  function paint(e) {
-    e.target.style.backgroundColor = 'white';
-    setTimeout(resetPixel, 1000, e.target);
-}
-function resetPixel(pixel) {
-  pixel.style.backgroundColor = "black";
+  $divs = $('span');
+  $divs.readacted;
+  setInterval(update,500);
+  $divs.on('click', spanClicked);
 }
 
+function updateSpan(){
+  console.log("Update span!");
+  let r = Math.random();
+  if (r < 0.1) {
+    $(this).removeClass('readacted');
+    $(this).addClass('revealed');
+  }
+}
 
-// draw()
-//
-// Description of draw()
+function update(){
+console.log("update()");
+$divs.each(updateSpan);
+}
 
-function draw() {
+function spanClicked(){
+  $(this).addClass('readacted');
+  $(this).removeClass('revealed');
 
 }
