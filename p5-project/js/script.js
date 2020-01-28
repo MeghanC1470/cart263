@@ -9,33 +9,43 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 
 ******************/
+let $mouth;
+let $fly;
+let buzzSound = new Audio("assets/sounds/buzz.mp3");
+let mouthSound = new Audio("assets/sounds/crunch.wav")
 
 $(document).ready(setup);
-  let $divs;
 
 function setup() {
-  $divs = $('span');
-  $divs.readacted;
-  setInterval(update,500);
-  $divs.on('click', spanClicked);
+  $mouth = $('#mouth');
+  $mouth.droppable({
+  drop: onDrop
+});
+  $fly = $('#fly');
+  $fly.draggable();
+  console.log('fly');
+  buzzSound.loop = true;
+  $fly.on('mousedown', function() {
+    buzzSound.play();
+  });
+  $fly.on('mouseup', function() {
+    buzzSound.pause();
+  });
 }
 
-function updateSpan(){
-  console.log("Update span!");
-  let r = Math.random();
-  if (r < 0.1) {
-    $(this).removeClass('readacted');
-    $(this).addClass('revealed');
-  }
+function onDrop(){
+$fly.remove()
+$(this).attr('src','assets/images/mouth2.png');
+setInterval(chew, 150);
 }
 
-function update(){
-console.log("update()");
-$divs.each(updateSpan);
+function chew(){
+  if ($mouth.attr('src') === 'assets/images/mouth.png') {
+    $mouth.attr('src','assets/images/mouth2.png');
+  mouthSound.currentTime = 0;
+  mouthSound.play();
 }
-
-function spanClicked(){
-  $(this).addClass('readacted');
-  $(this).removeClass('revealed');
-
+else {
+  $mouth.attr('src','assets/images/mouth.png');
+}
 }

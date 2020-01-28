@@ -5,14 +5,3 @@ In this case it's just padding and margin to 0
 so the canvas is flush with the top left corner.
 
 **********************************************/
-
-body {
-background-color: white;
-}
-.readacted {
-  color: transparent;
-  background-color: black;
-}
-.revealed {
-  background-color: red;
-}
