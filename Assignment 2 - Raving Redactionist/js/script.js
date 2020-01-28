@@ -82,6 +82,7 @@ $(this).removeClass('redacted');
 $(this).addClass('found');
 $(this).off('mouseover');
 secretsScore += 1;
+$(".Score").text(secretsScore);
 }
 
 // A version using anonymous functions if you're interested:
