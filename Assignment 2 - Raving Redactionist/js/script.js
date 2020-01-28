@@ -21,6 +21,7 @@ let $spans;
 
 let secretsTotal;
 let $secrets;
+let secretsScore = 0;
 
 // When the document is loaded we call the setup function
 $(document).ready(setup);
@@ -77,7 +78,10 @@ function updateSpan() {
 }
 
 function secretFound(){
-console.log("foundme");
+$(this).removeClass('redacted');
+$(this).addClass('found');
+$(this).off('mouseover');
+secretsScore += 1;
 }
 
 // A version using anonymous functions if you're interested:
