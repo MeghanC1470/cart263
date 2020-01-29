@@ -3,7 +3,7 @@
 /*****************
 
 Raving Redactionist
-Pippin Barr
+Meghan Cullen
 
 You are redacting a document, but it keeps becoming unredacted!
 Click the secret information to hide it, don't let all the
@@ -18,9 +18,11 @@ const UPDATE_FREQUENCY = 500;
 
 // A place to store the jQuery selection of all spans
 let $spans;
-
+// The total number of secrets
 let secretsTotal;
+// A place to store the jQuery for the secret spans
 let $secrets;
+// The counter for how many secrets found successfully
 let secretsScore = 0;
 
 // When the document is loaded we call the setup function
@@ -37,14 +39,13 @@ function setup() {
   // Set an interval of 500 milliseconds to update the state of the page
   setInterval(update, UPDATE_FREQUENCY);
 
+  // Save the selection of the secret spans
   $secrets = $('.secret');
+  // Set a mouseover handler on all the secret spans
   $secrets.on('mouseover',secretFound);
-
+  //Calculate the total number of secrets using .length property
   secretsTotal = $(".secret").length;
-  console.log(secretsTotal);
-
-
-};
+}
 
 // spanClicked()
 //
@@ -74,9 +75,15 @@ function updateSpan() {
   if (r < REVEAL_POSSIBILITY) {
     $(this).removeClass('redacted');
     $(this).addClass('revealed');
+    $secrets.removeClass('revealed');
   }
 }
 
+// secretFound()
+//
+// When a secret span is moused over, it reveals itself as a secret and
+// the SecretsFound counter adds one until the total number of secrets
+// are found
 function secretFound(){
 $(this).removeClass('redacted');
 $(this).addClass('found');

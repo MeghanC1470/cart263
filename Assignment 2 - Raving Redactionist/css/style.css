@@ -26,7 +26,9 @@ body {
   color: red; /* Emergency! */
 }
 
+/* Found elements will be highlighted in green */
 .found {
-  background-color: blue;
-  text-decoration: underline;
+  background-color: transparent; /* No background */
+  text-decoration: underline; /* underlined! */
+  color: green; /* Secret! */
 }
