@@ -11,12 +11,20 @@ author, and this description to match your project!
 ******************/
 
 let $box
-let $circle
+let $ball
 
 $(document).ready(setup);
 
 function setup() {
-
+  $box = $('#box');
+  $box.droppable({
+  drop: onDrop
+});
+  $ball = $('#ball');
+  $ball.draggable();
 }
 
+function onDrop(){
+$ball.remove()
+}
 //update Function
