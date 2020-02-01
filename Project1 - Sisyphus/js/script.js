@@ -21,10 +21,11 @@ function setup() {
   drop: onDrop
 });
   $ball = $('#ball');
-  $ball.draggable();
+  $ball.draggable({
+  revert: "valid"
+});
 }
 
 function onDrop(){
-$ball.remove()
+$ball.draggable()
 }
-//update Function
