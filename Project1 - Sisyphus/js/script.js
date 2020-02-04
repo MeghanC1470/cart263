@@ -5,16 +5,19 @@
 Sisyphus
 Meghan Cullen
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Papa Zeus told Lil' Sisyphus to put his toys away, but some just won't go
+back no matter what lil Sisy does!
 
 ******************/
 
-let $box
-let $ball
-let $bear
-let $train
-let $car
+let $box;
+let $ball;
+let $bear;
+let $train;
+let $car;
+
+let random;
+let message = ['Put your toys away Lil Sisyphus', 'Why have you not put your toys away yet?', 'Put your toys away right now!', 'Are you happy, Sisyphus?', 'Are you almost done Sisyphus?', 'I am going to count to 3 and the toys better be away!', 'Clean up your mess, Sisyphus!', 'All done?', 'What are you doing Sisyphus?'];
 
 $(document).ready(setup);
 
@@ -35,9 +38,12 @@ function setup() {
   $bear.draggable();
   $car = $('.car');
   $car.draggable();
+
 }
 
 function onDrop(event, ui){
+random = Math.floor(Math.random() * message.length);
+$('#messageDisplay').text(message[random]);
 $ball.draggable();
 $train.draggable();
 if ( $(ui.draggable).hasClass("bear") === true){
