@@ -15,6 +15,7 @@ let $ball;
 let $bear;
 let $train;
 let $car;
+let $horse
 
 let random;
 let message = ['Put your toys away Lil Sisyphus', 'Why have you not put your toys away yet?', 'Put your toys away right now!', 'Are you happy, Sisyphus?', 'Are you almost done Sisyphus?', 'I am going to count to 3 and the toys better be away!', 'Clean up your mess, Sisyphus!', 'All done?', 'What are you doing Sisyphus?'];
@@ -38,7 +39,8 @@ function setup() {
   $bear.draggable();
   $car = $('.car');
   $car.draggable();
-
+  $horse = $('.horse');
+  $horse.draggable();
 }
 
 function onDrop(event, ui){
@@ -52,4 +54,7 @@ $(ui.draggable).remove();
 if ( $(ui.draggable).hasClass("car") === true){
 $(ui.draggable).remove();
   }
+if ( $(ui.draggable).hasClass("horse") === true){
+  $(ui.draggable).remove();
+    }
 }
