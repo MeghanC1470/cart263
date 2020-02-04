@@ -14,6 +14,7 @@ let $box
 let $ball
 let $bear
 let $train
+let $car
 
 $(document).ready(setup);
 
@@ -26,12 +27,14 @@ function setup() {
   $ball.draggable({
     revert: "valid"
 });
-  $bear = $('.bear');
-  $bear.draggable();
   $train = $('#train');
   $train.draggable({
     revert: "valid"
-  })
+});
+  $bear = $('.bear');
+  $bear.draggable();
+  $car = $('.car');
+  $car.draggable();
 }
 
 function onDrop(event, ui){
@@ -39,6 +42,8 @@ $ball.draggable();
 $train.draggable();
 if ( $(ui.draggable).hasClass("bear") === true){
 $(ui.draggable).remove();
-}
-  console.log("bear");
+  }
+if ( $(ui.draggable).hasClass("car") === true){
+$(ui.draggable).remove();
+  }
 }
