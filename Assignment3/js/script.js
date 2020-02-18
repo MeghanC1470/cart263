@@ -149,6 +149,24 @@ let animals = [
   let answers = [];
   const NUM_OPTIONS = 6;
 
+  if (annyang) {
+    // Let's define a command.
+    var commands = {
+      'hello': function() { alert('Hello world!'); }
+    };
+
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+
+    // Start listening.
+    annyang.start();
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+
 $(document).ready(setup);
 
 function setup() {
@@ -179,9 +197,8 @@ function newRound(){
     $('.guess').remove();
     setTimeout(newRound,100);
     }
-    else { // Otherwise they were wrong, so shake the clicked button
+    else {
     $(this).effect('shake');
-    // And say the correct animal again to "help" them
     sayBackwards($correctButton.text());
     }
   }
