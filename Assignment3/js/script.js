@@ -148,6 +148,7 @@ let animals = [
   let correctAnimal
   let answers = [];
   const NUM_OPTIONS = 6;
+  
 
 $(document).ready(setup);
 
@@ -174,6 +175,7 @@ function newRound(){
     correctAnimal = answers[Math.floor(Math.random()* answers.length)];
    sayBackwards(correctAnimal);
 }
+
   function handleGuess(){
     if ($(this).text() === correctAnimal) {
     $('.guess').remove();
