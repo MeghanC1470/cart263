@@ -145,27 +145,33 @@ let animals = [
   "yak",
   "zebra"
 ]
-let correctAnimal
+let correctAnimal;
 let answers = [];
 const NUM_OPTIONS = 6;
+let score = 0;
 
 if (annyang) {
   // Let's define a command.
   var commands = {
     'I give up': function() {
-      $('.guess').remove();
-      newRound();
+      $('.guess').each(function() {
+        if ($(this).text() === correctAnimal) {
+          $(this).effect('shake');
+        }
+      });
+      setTimeout(newRound, 2000);
+
     },
     'Say it again': function() {
       sayBackwards(correctAnimal);
     },
     'I think it is *correctAnswer': function(correctAnswer) {
-      console.log("Heard ya"); if (correctAnimal === correctAnswer) {
+        if (correctAnimal === correctAnswer) {
         $('.guess').remove();
         setTimeout(newRound,100);
+        scoreCounter();
       }}
     };
-
     annyang.addCommands(commands);
 
     // Start listening. You can call this here, or attach this call to an event, button, etc.
@@ -188,6 +194,7 @@ if (annyang) {
   }
 
   function newRound(){
+    $('.guess').remove();
     answers = [];
     for (let i = 0; i < NUM_OPTIONS; i++) {
       let answer = animals[Math.floor(Math.random()* animals.length)];
@@ -201,6 +208,7 @@ if (annyang) {
   function handleGuess(){
     if ($(this).text() === correctAnimal) {
       $('.guess').remove();
+      scoreCounter();
       setTimeout(newRound,100);
     }
     else {
@@ -216,4 +224,9 @@ if (annyang) {
       pitch: Math.random()
     };
     responsiveVoice.speak(backwardsText);
+  }
+
+  function scoreCounter(){
+      score += 1;
+      console.log("HAHA, ONE");
   }
