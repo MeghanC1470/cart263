@@ -152,7 +152,8 @@ let animals = [
   if (annyang) {
     // Let's define a command.
     var commands = {
-      'hello': function() { alert('Hello world!'); }
+      'I give up': function() {$('.guess').remove(); newRound();}
+      'Say it again': function() {sayBackwards(correctAnimal);}
     };
 
     // Add our commands to annyang
@@ -192,6 +193,7 @@ function newRound(){
     correctAnimal = answers[Math.floor(Math.random()* answers.length)];
    sayBackwards(correctAnimal);
 }
+
   function handleGuess(){
     if ($(this).text() === correctAnimal) {
     $('.guess').remove();
@@ -201,7 +203,23 @@ function newRound(){
     $(this).effect('shake');
     sayBackwards($correctButton.text());
     }
+  if (annyang) {
+      // Let's define a command.
+  var commands = {
+        'Hi': function() { newRound(); }
+      };
+      // Add our commands to annyang
+  annyang.addCommands(commands);
+
+      // Start listening.
+  annyang.start();
+    // Add our commands to annyang
+  annyang.addCommands(commands);
+
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
   }
+}
 
   function sayBackwards(text){
     let backwardsText = text.split('').reverse().join('');
