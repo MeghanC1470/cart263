@@ -169,7 +169,7 @@ if (annyang) {
         if (correctAnimal === correctAnswer) {
         $('.guess').remove();
         setTimeout(newRound,100);
-        scoreCounter();
+        updateScore();
       }}
     };
     annyang.addCommands(commands);
@@ -182,6 +182,11 @@ if (annyang) {
 
   function setup() {
     newRound();
+  }
+
+  function updateScore() {
+    $('#scorenumber').text(score);
+
   }
 
   function addButton(label){
@@ -203,17 +208,21 @@ if (annyang) {
     }
     correctAnimal = answers[Math.floor(Math.random()* answers.length)];
     sayBackwards(correctAnimal);
+    updateScore();
   }
 
   function handleGuess(){
     if ($(this).text() === correctAnimal) {
       $('.guess').remove();
-      scoreCounter();
       setTimeout(newRound,100);
+      score = score + 1;
+      updateScore();
     }
     else {
       $(this).effect('shake');
-      sayBackwards($correctButton.text());
+      sayBackwards(correctAnimal);
+      score = 0;
+      updateScore();
     }
   }
 
@@ -224,9 +233,4 @@ if (annyang) {
       pitch: Math.random()
     };
     responsiveVoice.speak(backwardsText);
-  }
-
-  function scoreCounter(){
-      score += 1;
-      console.log("HAHA, ONE");
   }
