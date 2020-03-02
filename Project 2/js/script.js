@@ -9,6 +9,19 @@ In this project, you will be given a set of animals. Someone will say one animal
 name backwards, and it's up to you to figure out which one is the correct animal.
 
 ******************/
+let p1
+let p2
+let p3
+let p4
+let p5
+let p6
+let p7
+let p8
+let p9
+let p10
+let p11
+let p12
+let p13
 
 // annyang
 //
@@ -23,7 +36,7 @@ if (annyang) {
     'Yes':  function(){
       responsiveVoice.speak("Great! We will start by showing you a selection of photos from current popular children's videos. Click the button to begin the first phase.")
       addButton("Begin");
-      
+
     },
     'No': function(){
       responsiveVoice.speak("We understand. Have a good day.")
@@ -39,12 +52,13 @@ if (annyang) {
 
   $(document).ready(setup);
 
+
+
 // function setup
 //
 // Sets up a new fresh round for the player to begin with
   function setup() {
     responsiveVoice.speak("Say Hello to begin!");
-
   }
 
   function addButton(label){
@@ -57,5 +71,5 @@ if (annyang) {
   }
 
   function showImages(){
-    console.log("SHOW");
+    console.log("Showing")
   }
