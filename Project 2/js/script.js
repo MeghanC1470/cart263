@@ -23,7 +23,6 @@ if (annyang) {
     'Yes':  function(){
       responsiveVoice.speak("Great! We will start by showing you a selection of photos from current popular children's videos. Click the button to begin the first phase.")
       addButton("Begin");
-      <button onclick="responsiveVoice.speak('This is it');"</button>
     },
     'No': function(){
       responsiveVoice.speak("We understand. Have a good day.")
@@ -52,5 +51,9 @@ if (annyang) {
     $div.text(label);
     $div.button();
     $div.appendTo('body');
-    $div.on('click',handleGuess);
+    $div.on('click', showImages);
+  }
+
+  function showImages(){
+    console.log("SHOW");
   }
