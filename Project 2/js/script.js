@@ -18,10 +18,12 @@ if (annyang) {
   // Let's define a command.
   var commands = {
     'Hello': function(){
-      responsiveVoice.speak("Great to meet you! Today we will be performing a small survey. Will you help us? Please say yes or no");
+      responsiveVoice.speak("Great to meet you! Today you will be helping our system's algorithm in order to execute proper content for children. All the choices you make will be taken into account and if found acceptable will improve the algorithm to bring safe and entertaining content. Please say yes to begin the test or no if you are not interested.");
     },
     'Yes':  function(){
-      responsiveVoice.speak("Great!")
+      responsiveVoice.speak("Great! We will start by showing you a selection of photos from current popular children's videos. Click the button to begin the first phase.")
+      addButton("Begin");
+      <button onclick="responsiveVoice.speak('This is it');"</button>
     },
     'No': function(){
       responsiveVoice.speak("We understand. Have a good day.")
@@ -41,9 +43,14 @@ if (annyang) {
 //
 // Sets up a new fresh round for the player to begin with
   function setup() {
-    responsiveVoice.speak("Say Hello!");
+    responsiveVoice.speak("Say Hello to begin!");
   }
 
-  function hello() {
-    responsiveVoice.speak("Great to meet you!");
+  function addButton(label){
+    let $div = $('<div></div>');
+    $div.addClass('guess');
+    $div.text(label);
+    $div.button();
+    $div.appendTo('body');
+    $div.on('click',handleGuess);
   }
