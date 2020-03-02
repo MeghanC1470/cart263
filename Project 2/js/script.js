@@ -23,6 +23,7 @@ if (annyang) {
     'Yes':  function(){
       responsiveVoice.speak("Great! We will start by showing you a selection of photos from current popular children's videos. Click the button to begin the first phase.")
       addButton("Begin");
+      
     },
     'No': function(){
       responsiveVoice.speak("We understand. Have a good day.")
@@ -43,6 +44,7 @@ if (annyang) {
 // Sets up a new fresh round for the player to begin with
   function setup() {
     responsiveVoice.speak("Say Hello to begin!");
+
   }
 
   function addButton(label){
