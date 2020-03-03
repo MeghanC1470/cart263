@@ -35,7 +35,7 @@ if (annyang) {
     },
     'Yes':  function(){
       responsiveVoice.speak("Great! We will start by showing you a selection of photos from current popular children's videos. Click the button to begin the first phase.")
-      addButton("Begin");
+      addButton("Begin Phase 1");
 
     },
     'No': function(){
@@ -66,10 +66,12 @@ if (annyang) {
     $div.addClass('guess');
     $div.text(label);
     $div.button();
-    $div.appendTo('body');
+    $div.appendTo('h1');
     $div.on('click', showImages);
   }
 
   function showImages(){
-    console.log("Showing")
+$('<img src="assets/images/P1.png">').appendTo("h2")
+$('<img src="assets/images/P2.png">').appendTo("h2")
+$('<img src="assets/images/P3.png">').appendTo("h2")
   }
