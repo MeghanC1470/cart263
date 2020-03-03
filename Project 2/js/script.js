@@ -23,12 +23,6 @@ let p11
 let p12
 let p13
 
-let voice = 'UK English Female';
-
-let voiceParameters = {
-  pitch: 0.1,
-  rate: 0.9
-};
 
 // annyang
 //
@@ -51,7 +45,7 @@ if (annyang) {
 
   // Start listening.
   annyang.start();
-}
+};
 
   $(document).ready(setup);
 
@@ -62,7 +56,7 @@ if (annyang) {
 // Sets up a new fresh round for the player to begin with
   function setup() {
     responsiveVoice.speak("Say Hello to begin!");
-  }
+  };
 
   function addButton(label,imageFunction){
     let $div = $('<div></div>');
@@ -71,7 +65,7 @@ if (annyang) {
     $div.button();
     $div.appendTo('h1');
     $div.on('click', imageFunction);
-  }
+  };
 
   function phase1(){
     responsiveVoice.speak("Please click Yes if you think this content is appropriate, or no if you think otherwise")
@@ -80,14 +74,14 @@ $('<img src="assets/images/P2.png">').appendTo("h2");
 $('<img src="assets/images/P3.png">').appendTo("h2");
 addButton("Yes", goToPhase2);
 addButton("No", goToPhase2);
-  }
+};
 
   function goToPhase2(){
     responsiveVoice.speak("Hmm, interesting choice");
     $("img").remove();
     $(".button").remove();
     addButton("Begin Phase 2", phase2);
-  }
+  };
 
   function phase2(){
   $('<img src="assets/images/P4.png">').appendTo("h2");
@@ -95,14 +89,14 @@ addButton("No", goToPhase2);
   $('<img src="assets/images/P6.png">').appendTo("h2");
   addButton("Yes", goToPhase3);
   addButton("No", goToPhase3);
-  }
+};
 
   function goToPhase3(){
     responsiveVoice.speak("Your choice is rather curious");
     $("img").remove();
     $(".button").remove();
     addButton("Begin Phase 3", phase3);
-  }
+  };
 
 
   function phase3(){
@@ -111,18 +105,35 @@ addButton("No", goToPhase2);
   $('<img src="assets/images/P9.png">').appendTo("h2");
   addButton("Yes", goToPhase4);
   addButton("No", goToPhase4);
-  }
+
+};
 
   function goToPhase4(){
-    responsiveVoice.speak("Your choice is rather curious");
+    responsiveVoice.speak("The test is nearly complete");
     $("img").remove();
     $(".button").remove();
     addButton("Begin Phase 4", phase4);
-  }
+  };
 
   function phase4(){
   $('<img src="assets/images/P10.png">').appendTo("h2");
   $('<img src="assets/images/P11.png">').appendTo("h2");
   $('<img src="assets/images/P12.png">').appendTo("h2");
+  addButton("Yes", goToEnding);
+  addButton("No", goToEnding);
+};
 
-  }
+function goToEnding(){
+  responsiveVoice.speak("Thank you. We have recieved your data and we have taken your choices into account. Click below to see how you've helped us improve children's content and made the internet safer.");
+  $("img").remove();
+  $(".button").remove();
+  addButton("See the Results!", seeResults);
+};
+
+function seeResults(){
+responsiveVoice.speak("After carefully reviewing your choices, the system has decided that all your choices were unacceptable. Our database shows that the videos selected for this test have gained millions of positive reviews. Thus, there is no reason for any change at all. Thank you for helping make the internet a safer place for children. This concludes the test.")
+$(".button").remove();
+$('<img src="assets/images/giphy.gif">').appendTo("h2");
+$('<img src="assets/images/giphy.gif">').appendTo("h2");
+$('<img src="assets/images/giphy.gif">').appendTo("h2");
+}
