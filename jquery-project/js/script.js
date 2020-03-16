@@ -25,7 +25,7 @@ console.log(data);
 let randomColor = getRandomArrayElement(data.colors);
 console.log(randomColor);
 let randomCondiment = getRandomArrayElement(data.condiments);
-console.log(randomCondiment)
+console.log(randomCondiment);
 let verb = "is";
 if (randomCondiment.charAt(randomCondiment.length - 1) === "s") {
   verb = "are";
@@ -39,13 +39,13 @@ if (vowelCheck === 'A' ||
 vowelCheck === 'E' ||
 vowelCheck === 'I' ||
 vowelCheck === 'O' ||
-vowelCheck === 'U' ||) {
+vowelCheck === 'U') {
 noun = 'an';
 }
 let randomRoom = getRandomArrayElement(data.rooms);
 console.log(randomRoom);
 let randomIsms = getRandomArrayElement(data.isms);
-console.log(randomIsms)
+console.log(randomIsms);
 
 
 let randomDescription = `${randomColor} ${randomCondiment} ${verb} like a ${randomCat} in a ${randomRoom}. You feel like ${randomIsms}`
