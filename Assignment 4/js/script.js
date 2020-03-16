@@ -39,7 +39,7 @@ if (vowelCheck === 'A' ||
 vowelCheck === 'E' ||
 vowelCheck === 'I' ||
 vowelCheck === 'O' ||
-vowelCheck === 'U' ||) {
+vowelCheck === 'U') {
 noun = 'an';
 }
 let randomRoom = getRandomArrayElement(data.rooms);
