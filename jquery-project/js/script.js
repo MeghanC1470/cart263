@@ -17,7 +17,7 @@ function setup() {
 $.getJSON("data/data2.json")
 .done(dataLoaded)
 .fail(dataNotLoaded);
-}
+};
 
 function dataLoaded(data){
 console.log(data);
