@@ -46,9 +46,11 @@ let randomRoom = getRandomArrayElement(data.rooms);
 console.log(randomRoom);
 let randomIsms = getRandomArrayElement(data.isms);
 console.log(randomIsms)
+let randomParties = getRandomArrayElement(data.parties);
+console.log(randomParties);
 
 
-let randomDescription = `${randomColor} ${randomCondiment} ${verb} like a ${randomCat} in a ${randomRoom}. You feel like ${randomIsms}`
+let randomDescription = `${randomColor} ${randomCondiment} ${verb} like ${noun} ${randomCat} in a ${randomRoom}. You feel like ${randomIsms} for a while, but then the ${randomParties} hits...`
 $('body').append(randomDescription);
 }
 
