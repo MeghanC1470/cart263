@@ -44,6 +44,7 @@ if (annyang) {
 var commands = {
   'Hello': function(){
     console.log("hello");
+    synth.pause({continuous: false });
   }
 };
 
@@ -51,7 +52,7 @@ var commands = {
 annyang.addCommands(commands);
 
 //Start listening.
-annyang.start();
+annyang.start({ autoRestart: false, continuous: false });
 };
 
 $(document).ready(setup);
