@@ -27,6 +27,7 @@ let frequencies = [
 ];
 // The synth
 let synth;
+let synthInterval;
 // The sound files
 let kick;
 let snare;
@@ -42,9 +43,52 @@ let beat = 0;
 if (annyang) {
 //Let's define a command.
 var commands = {
-  'Hello': function(){
-    console.log("hello");
-    synth.pause({continuous: false });
+  'Melody off': function(){
+    console.log("Synth Off");
+    synth.volume = 0
+  },
+  'Melody on': function(){
+    console.log("Synth On");
+    synth.volume = 1
+  },
+  //Change synth
+  'Kick off': function(){
+    console.log("Kick Off");
+    kick.volume = 0
+  },
+  'Kick on': function(){
+    console.log("Kick On");
+    kick.volume = 1
+  },
+  'Snare off': function(){
+    console.log("Snare Off");
+    snare.volume = 0
+  },
+  'Snare on': function(){
+    console.log("Snare On");
+    snare.volume = 1
+  },
+  'Hat off': function(){
+    console.log("Hihat Off");
+    hihat.volume = 0
+  },
+  'Hat on': function(){
+    console.log("Hihat On");
+    hihat.volume = 0
+  },
+  'All off': function(){
+    console.log("Everything is off");
+    synth.volume = 0
+    kick.volume = 0
+    snare.volume = 0
+    hihat.volume = 0
+  },
+  'All on': function(){
+    console.log("Everything is on");
+    synth.volume = 1
+    kick.volume = 1
+    snare.volume = 1
+    hihat.volume = 1
   }
 };
 
@@ -52,7 +96,7 @@ var commands = {
 annyang.addCommands(commands);
 
 //Start listening.
-annyang.start({ autoRestart: false, continuous: false });
+annyang.start();
 };
 
 $(document).ready(setup);
@@ -99,7 +143,7 @@ function setup() {
 // user interaction (and to give the files time to load)
 function mousePressed() {
   // Start an interval for the notes
-  setInterval(playNote, NOTE_TEMPO);
+  synthInterval = setInterval(playNote, NOTE_TEMPO);
   // Start an interval for the drums
   setInterval(playDrum, DRUM_TEMPO);
 }
