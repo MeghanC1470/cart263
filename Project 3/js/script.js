@@ -5,8 +5,7 @@
 Project 3
 Meghan Cullen
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+GOAL: CREATE A SONG FROM A JUMBLE OF SOUNDS THROUGH VOICE COMMANDS AND BUTTONS
 
 ******************/
 // Time for one note
@@ -32,11 +31,12 @@ let synthInterval;
 let kick;
 let snare;
 let hihat;
+let drumbeat;
 // Our drum pattern
 // Each array element is one beat and has a string with each
 // drum to play for that beat
 // x = kick, o = snare, * = hihat
-let pattern = ['x', '*', 'xo*', ' ', 'x', 'x', 'xo', '*'];
+let pattern = ['xa', '*', 'xo*', 'a', 'x', 'x', 'xo', '*'];
 // Which beat of the pattern we're at right now
 let beat = 0;
 
@@ -80,6 +80,10 @@ var commands = {
   'Cymbals on': function(){
     console.log("Cymbals On");
     hihat.volume = 1
+  },
+  'Drums on': function(){
+    console.log("Drums on");
+    drumbeat.volume = 1
   },
   'All off': function(){
     console.log("Everything is off");
@@ -140,18 +144,15 @@ function setup() {
       path: 'assets/sounds/hihat.wav'
     }
   });
+
+  drumbeat = new Pizzicato.Sound ({
+    source: 'file',
+    options: {
+    path: 'assets/sounds/5Drumhit.wav'
+    }
+  });
 }
 
-// mousePressed
-//
-// Using this to start the note and drum sequences to get around
-// user interaction (and to give the files time to load)
-function mousePressed() {
-  // Start an interval for the notes
-  synthInterval = setInterval(playNote, NOTE_TEMPO);
-  // Start an interval for the drums
-  setInterval(playDrum, DRUM_TEMPO);
-}
 
 // playNote
 //
@@ -184,6 +185,9 @@ function playDrum() {
   // If there's an '*' in there, play the hihat
   if (symbols.includes('*')) {
     hihat.play();
+  }
+  if (symbols.includes('a')) {
+    drumbeat.play();
   }
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
