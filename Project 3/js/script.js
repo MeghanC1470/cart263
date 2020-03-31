@@ -43,6 +43,11 @@ let beat = 0;
 if (annyang) {
 //Let's define a command.
 var commands = {
+  'Start': function(){
+    console.log("Starting Beat");
+    synthInterval = setInterval(playNote, NOTE_TEMPO);
+    setInterval(playDrum, DRUM_TEMPO);
+  },
   'Melody off': function(){
     console.log("Synth Off");
     synth.volume = 0
@@ -68,13 +73,13 @@ var commands = {
     console.log("Snare On");
     snare.volume = 1
   },
-  'Hat off': function(){
-    console.log("Hihat Off");
+  'Cymbals off': function(){
+    console.log("Cymbals Off");
     hihat.volume = 0
   },
-  'Hat on': function(){
-    console.log("Hihat On");
-    hihat.volume = 0
+  'Cymbals on': function(){
+    console.log("Cymbals On");
+    hihat.volume = 1
   },
   'All off': function(){
     console.log("Everything is off");
@@ -181,7 +186,7 @@ function playDrum() {
     hihat.play();
   }
   // Advance the pattern by a beat
-  beat = (beat + 1) % pattern.length;
+  beat = (beat + 2) % pattern.length;
 }
 
 // draw()
