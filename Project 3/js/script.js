@@ -85,19 +85,25 @@ var commands = {
     console.log("Drums on");
     drumbeat.volume = 1
   },
-  'All off': function(){
+  'Drums off': function(){
+    console.log("Drums off");
+    drumbeat.volume = 0
+  },
+  'Stop': function(){
     console.log("Everything is off");
     synth.volume = 0
     kick.volume = 0
     snare.volume = 0
     hihat.volume = 0
+    drumbeat.volume = 0
   },
-  'All on': function(){
+  'Resume': function(){
     console.log("Everything is on");
     synth.volume = 1
     kick.volume = 1
     snare.volume = 1
     hihat.volume = 1
+    drumbeat.volume = 1
   }
 };
 
