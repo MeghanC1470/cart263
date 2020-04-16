@@ -38,7 +38,7 @@ let bass
 // Each array element is one beat and has a string with each
 // drum to play for that beat
 // x = kick, o = snare, * = cymbals
-let pattern = ['xa', '*', 'x*', 'abo', 'x', 'x', 'xao', '*', 'b'];
+let pattern = ['uxa', '*u', 'x*', 'abou', 'x', 'x', 'xao', '*', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
 
@@ -77,6 +77,16 @@ var commands = {
     console.log("Kick On");
     kick.volume = 1
   },
+  'Kick Beat Down': function(){
+    console.log("Synth Beat Down By 10");
+    //noteTempo += 125;
+    document.getElementById("myKickRange").value -= "10";
+  },
+  'Kick Beat Up': function(){
+    console.log("Synth Beat Up By 10");
+    //noteTempo -= 125;
+    document.getElementById("myKickRange").value += "10";
+  },
   'Cymbals off': function(){
     console.log("Cymbals Off");
     cymbals.volume = 0
@@ -109,6 +119,14 @@ var commands = {
     console.log("Guitar off");
     guitar.volume = 0
   },
+  'Bass on': function(){
+    console.log("Bass on");
+    bass.volume = 1
+  },
+  'Bass off': function(){
+    console.log("Bass off");
+    bass.volume = 0
+  },
   'Stop': function(){
     console.log("Everything is off");
     synth.volume = 0
@@ -117,6 +135,7 @@ var commands = {
     drums.volume = 0
     bow.volume = 0
     guitar.volume = 0
+    bass.volume = 0
   },
   'Resume': function(){
     console.log("Everything is on");
@@ -126,6 +145,7 @@ var commands = {
     drums.volume = 1
     bow.volume = 1
     guitar.volume = 1
+    bass.volume = 1
   }
 };
 
@@ -188,6 +208,13 @@ function setup() {
     path: 'assets/sounds/electricguitar.wav'
     }
   });
+
+  bass = new Pizzicato.Sound ({
+    source: 'file',
+    options: {
+    path: 'assets/sounds/bass.wav'
+    }
+  });
 }
 
 
@@ -228,6 +255,9 @@ function playDrum() {
   }
   if (symbols.includes("o")) {
     guitar.play();
+  }
+  if (symbols.includes("u")) {
+    bass.play();
   }
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
