@@ -7,6 +7,7 @@ so the canvas is flush with the top left corner.
 **********************************************/
 .slidecontainer {
   width: 45%; /* Width of the outside container */
+  border-radius: 50%;
 }
 
 /* The slider itself */
@@ -35,7 +36,7 @@ so the canvas is flush with the top left corner.
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   border-radius: 50%;
-  background: #4CAF50; /* Green background */
+  background: #0000A0; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -43,6 +44,6 @@ so the canvas is flush with the top left corner.
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   border-radius: 50%;
-  background: #4CAF50; /* Green background */
+  background: #0000A0; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }

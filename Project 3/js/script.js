@@ -59,14 +59,14 @@ var commands = {
     synth.volume = 1
   },
   'Melody Beat Down': function(){
-    console.log("Synth Beat Down By 1");
+    console.log("Synth Beat Down By 10");
     noteTempo += 125;
-    document.getElementById("myRange").value -= "10";
+    document.getElementById("myMelodyRange").value -= "10";
   },
   'Melody Beat Up': function(){
-    console.log("Synth Beat Up By 1");
+    console.log("Synth Beat Up By 10");
     noteTempo -= 125;
-    document.getElementById("myRange").value += "10";
+    document.getElementById("myMelodyRange").value += "10";
   },
   //Change synth
   'Kick off': function(){
