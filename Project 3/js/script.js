@@ -9,7 +9,7 @@ GOAL: CREATE A SONG FROM A JUMBLE OF SOUNDS THROUGH VOICE COMMANDS AND BUTTONS
 
 ******************/
 // Time for one note
-const NOTE_TEMPO = 500;
+let noteTempo = 500;
 // Time for one beat
 const DRUM_TEMPO = 250;
 // Attack time for a note (in seconds)
@@ -47,7 +47,7 @@ if (annyang) {
 var commands = {
   'Start': function(){
     console.log("Starting Beat");
-    synthInterval = setInterval(playNote, NOTE_TEMPO);
+    synthInterval = setTimeout(playNote, noteTempo);
     setInterval(playDrum, DRUM_TEMPO);
   },
   'Melody off': function(){
@@ -58,9 +58,15 @@ var commands = {
     console.log("Synth On");
     synth.volume = 1
   },
+  'Melody Beat Down': function(){
+    console.log("Synth Beat Down By 1");
+    noteTempo += 125;
+    document.getElementById("myRange").value -= "10";
+  },
   'Melody Beat Up': function(){
     console.log("Synth Beat Up By 1");
-    synth.frequency += 1;
+    noteTempo -= 125;
+    document.getElementById("myRange").value += "10";
   },
   //Change synth
   'Kick off': function(){
@@ -134,6 +140,8 @@ $(document).ready(setup);
 
 function setup() {
 
+
+
   // Create the synth
   synth = new Pizzicato.Sound({
     source: 'wave',
@@ -193,6 +201,7 @@ function playNote() {
   synth.frequency = frequency;
   // If it's not already playing, play the synth
   synth.play();
+  setTimeout(playNote, noteTempo);
 }
 
 // playDrum()
