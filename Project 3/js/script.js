@@ -58,6 +58,10 @@ var commands = {
     console.log("Synth On");
     synth.volume = 1
   },
+  'Melody Beat Up': function(){
+    console.log("Synth Beat Up By 1");
+    synth.frequency += 1;
+  },
   //Change synth
   'Kick off': function(){
     console.log("Kick Off");
