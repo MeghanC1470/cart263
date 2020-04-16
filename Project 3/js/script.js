@@ -29,14 +29,16 @@ let synth;
 let synthInterval;
 // The sound files
 let kick;
-let snare;
-let hihat;
-let drumbeat;
+let cymbals;
+let drums;
+let bow;
+let guitar
+let bass
 // Our drum pattern
 // Each array element is one beat and has a string with each
 // drum to play for that beat
-// x = kick, o = snare, * = hihat
-let pattern = ['xa', '*', 'xo*', 'a', 'x', 'x', 'xo', '*'];
+// x = kick, o = snare, * = cymbals
+let pattern = ['xa', '*', 'x*', 'abo', 'x', 'x', 'xao', '*', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
 
@@ -65,45 +67,55 @@ var commands = {
     console.log("Kick On");
     kick.volume = 1
   },
-  'Snare off': function(){
-    console.log("Snare Off");
-    snare.volume = 0
-  },
-  'Snare on': function(){
-    console.log("Snare On");
-    snare.volume = 1
-  },
   'Cymbals off': function(){
     console.log("Cymbals Off");
-    hihat.volume = 0
+    cymbals.volume = 0
   },
   'Cymbals on': function(){
     console.log("Cymbals On");
-    hihat.volume = 1
+    cymbals.volume = 1
   },
   'Drums on': function(){
     console.log("Drums on");
-    drumbeat.volume = 1
+    drums.volume = 1
   },
   'Drums off': function(){
     console.log("Drums off");
-    drumbeat.volume = 0
+    drums.volume = 0
+  },
+  'Bow on': function(){
+    console.log("Bow on");
+    bow.volume = 1
+  },
+  'Bow off': function(){
+    console.log("Bow off");
+    bow.volume = 0
+  },
+  'Guitar on': function(){
+    console.log("Guitar on");
+    guitar.volume = 1
+  },
+  'Guitar off': function(){
+    console.log("Guitar off");
+    guitar.volume = 0
   },
   'Stop': function(){
     console.log("Everything is off");
     synth.volume = 0
     kick.volume = 0
-    snare.volume = 0
-    hihat.volume = 0
-    drumbeat.volume = 0
+    cymbals.volume = 0
+    drums.volume = 0
+    bow.volume = 0
+    guitar.volume = 0
   },
   'Resume': function(){
     console.log("Everything is on");
     synth.volume = 1
     kick.volume = 1
-    snare.volume = 1
-    hihat.volume = 1
-    drumbeat.volume = 1
+    cymbals.volume = 1
+    drums.volume = 1
+    bow.volume = 1
+    guitar.volume = 1
   }
 };
 
@@ -137,24 +149,31 @@ function setup() {
     }
   });
 
-  snare = new Pizzicato.Sound({
+  cymbals = new Pizzicato.Sound({
     source: 'file',
     options: {
-      path: 'assets/sounds/snare.wav'
+      path: 'assets/sounds/cymbals.wav'
     }
   });
 
-  hihat = new Pizzicato.Sound({
+  drums = new Pizzicato.Sound ({
     source: 'file',
     options: {
-      path: 'assets/sounds/hihat.wav'
+    path: 'assets/sounds/drums.wav'
     }
   });
 
-  drumbeat = new Pizzicato.Sound ({
+  bow = new Pizzicato.Sound ({
     source: 'file',
     options: {
-    path: 'assets/sounds/5Drumhit.wav'
+    path: 'assets/sounds/bowstring.wav'
+    }
+  });
+
+  guitar = new Pizzicato.Sound ({
+    source: 'file',
+    options: {
+    path: 'assets/sounds/electricguitar.wav'
     }
   });
 }
@@ -184,16 +203,18 @@ function playDrum() {
   if (symbols.includes('x')) {
     kick.play();
   }
-  // If there's an 'o' in there, play the snare
-  if (symbols.includes('o')) {
-    snare.play();
-  }
-  // If there's an '*' in there, play the hihat
+  // If there's an '*' in there, play the cymbals
   if (symbols.includes('*')) {
-    hihat.play();
+    cymbals.play();
   }
   if (symbols.includes('a')) {
-    drumbeat.play();
+    drums.play();
+  }
+  if (symbols.includes('b')) {
+    bow.play();
+  }
+  if (symbols.includes("o")) {
+    guitar.play();
   }
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
