@@ -11,7 +11,7 @@ GOAL: CREATE A SONG FROM A JUMBLE OF SOUNDS THROUGH VOICE COMMANDS AND BUTTONS
 // Time for one note
 let noteTempo = 500;
 // Time for one beat
-const DRUM_TEMPO = 250;
+let drumTempo = 250;
 // Attack time for a note (in seconds)
 const ATTACK = 0.1;
 // Release time for a note (in seconds)
@@ -48,7 +48,7 @@ var commands = {
   'Start': function(){
     console.log("Starting Beat");
     synthInterval = setTimeout(playNote, noteTempo);
-    setInterval(playDrum, DRUM_TEMPO);
+    setInterval(playDrum, drumTempo);
   },
   'Melody off': function(){
     console.log("Synth Off");
@@ -79,12 +79,12 @@ var commands = {
   },
   'Kick Beat Down': function(){
     console.log("Synth Beat Down By 10");
-    //noteTempo += 125;
+    drumTempo += 125;
     document.getElementById("myKickRange").value -= "10";
   },
   'Kick Beat Up': function(){
     console.log("Synth Beat Up By 10");
-    //noteTempo -= 125;
+    drumTempo -= 125;
     document.getElementById("myKickRange").value += "10";
   },
   'Cymbals off': function(){
