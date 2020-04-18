@@ -31,7 +31,6 @@ let synthInterval;
 let kick;
 let cymbals;
 let drums;
-let bow;
 let guitar
 let bass
 // Our drum pattern
@@ -61,13 +60,17 @@ var commands = {
   'Melody Beat Down': function(){
     console.log("Synth Beat Down By 10");
     noteTempo += 125;
-    document.getElementById("myMelodyRange").value -= "10";
+    var x = document.getElementById("myMelodyRange");
+    var newValue = parseInt(x.value) - 10;
+    document.getElementById("myMelodyRange").value = newValue;
   },
   'Melody Beat Up': function(){
-    console.log("Synth Beat Up By 10");
-    noteTempo -= 125;
-    document.getElementById("myMelodyRange").value += "10";
-  },
+   console.log("Synth Beat Up By 10");
+   noteTempo -= 125;
+   var x = document.getElementById("myMelodyRange");
+   var newValue = parseInt(x.value) + 10;
+   document.getElementById("myMelodyRange").value = newValue;
+ },
   //Change synth
   'Kick off': function(){
     console.log("Kick Off");
@@ -78,12 +81,12 @@ var commands = {
     kick.volume = 1
   },
   'Kick Beat Down': function(){
-    console.log("Kick Beat Down By 10");
+    console.log("Synth Beat Down By 10");
     drumTempo += 125;
     document.getElementById("myKickRange").value -= "10";
   },
   'Kick Beat Up': function(){
-    console.log("Kick Beat Up By 10");
+    console.log("Synth Beat Up By 10");
     drumTempo -= 125;
     document.getElementById("myKickRange").value += "10";
   },
@@ -102,14 +105,6 @@ var commands = {
   'Drums off': function(){
     console.log("Drums off");
     drums.volume = 0
-  },
-  'Bow on': function(){
-    console.log("Bow on");
-    bow.volume = 1
-  },
-  'Bow off': function(){
-    console.log("Bow off");
-    bow.volume = 0
   },
   'Guitar on': function(){
     console.log("Guitar on");
@@ -133,7 +128,6 @@ var commands = {
     kick.volume = 0
     cymbals.volume = 0
     drums.volume = 0
-    bow.volume = 0
     guitar.volume = 0
     bass.volume = 0
   },
@@ -143,7 +137,6 @@ var commands = {
     kick.volume = 1
     cymbals.volume = 1
     drums.volume = 1
-    bow.volume = 1
     guitar.volume = 1
     bass.volume = 1
   }
@@ -195,13 +188,6 @@ function setup() {
     }
   });
 
-  bow = new Pizzicato.Sound ({
-    source: 'file',
-    options: {
-    path: 'assets/sounds/bowstring.wav'
-    }
-  });
-
   guitar = new Pizzicato.Sound ({
     source: 'file',
     options: {
@@ -249,9 +235,6 @@ function playDrum() {
   }
   if (symbols.includes('a')) {
     drums.play();
-  }
-  if (symbols.includes('b')) {
-    bow.play();
   }
   if (symbols.includes("o")) {
     guitar.play();

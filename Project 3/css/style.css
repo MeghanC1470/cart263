@@ -71,7 +71,7 @@ body {
   font-family: 'Verdana', sans-serif;
 }
 html, body{
-  height: 100vh;
+  height: 50vh;
   width: 100vw;
   background: linear-gradient(to bottom, #7927b2, #fb3182);
   display: flex;
