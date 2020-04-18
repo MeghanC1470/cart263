@@ -42,7 +42,7 @@ let bass
 // Each array element is one beat and has a string with each
 // drum to play for that beat
 // x = kick, o = snare, * = cymbals
-let pattern = ['uxa', '*u', 'x*', 'abou', 'x', 'x', 'xao', '*', 'b'];
+let pattern = ['ua', '*u', '*', 'abou', 'ao', '*', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
 
@@ -52,7 +52,7 @@ var commands = {
   'Start': function(){
     console.log("Starting Beat");
     synthInterval = setTimeout(playNote, noteTempo);
-    setTimeout(playDrum, drumTempo);
+    setTimeout(playDrum, drumTempo, playKick);
   },
   'Melody off': function(){
     console.log("Synth Off");
@@ -241,6 +241,7 @@ function playKick() {
   kick.frequency = frequency;
   kick.play();
   setTimeout(playKick, kickTempo);
+  console.log("Playing")
 }
 
 // playDrum()
@@ -252,9 +253,7 @@ function playDrum() {
   let symbols = pattern[beat];
 
   // If there's an 'x' in there, play the kick
-  if (symbols.includes('x')) {
-    playKick();
-  }
+
   // If there's an '*' in there, play the cymbals
   if (symbols.includes('*')) {
     cymbals.play();
