@@ -7,7 +7,7 @@ so the canvas is flush with the top left corner.
 **********************************************/
 @font-face {
   font-family: Blacksword;
-  src:url(assets/font/Blacksword.otf);
+  src: url(assets/font/Blacksword.otf);
 }
 
 .slidecontainer {
@@ -72,6 +72,7 @@ body {
 }
 html, body{
   height: 100vh;
+  width: 100vw;
   background: linear-gradient(to bottom, #7927b2, #fb3182);
   display: flex;
   justify-content: center;
@@ -89,7 +90,7 @@ html, body{
   align-items: center;
 }
 p{
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   background-color: #7927b2;
   -webkit-background-clip: text;
