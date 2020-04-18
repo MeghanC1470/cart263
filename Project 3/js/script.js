@@ -78,12 +78,12 @@ var commands = {
     kick.volume = 1
   },
   'Kick Beat Down': function(){
-    console.log("Synth Beat Down By 10");
+    console.log("Kick Beat Down By 10");
     drumTempo += 125;
     document.getElementById("myKickRange").value -= "10";
   },
   'Kick Beat Up': function(){
-    console.log("Synth Beat Up By 10");
+    console.log("Kick Beat Up By 10");
     drumTempo -= 125;
     document.getElementById("myKickRange").value += "10";
   },
