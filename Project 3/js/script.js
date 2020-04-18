@@ -12,6 +12,11 @@ GOAL: CREATE A SONG FROM A JUMBLE OF SOUNDS THROUGH VOICE COMMANDS AND BUTTONS
 let noteTempo = 500;
 // Time for one beat
 let drumTempo = 250;
+let kickTempo = 250;
+let cymbalTempo = 250;
+let drumsTempo = 250;
+let guitarTempo = 250;
+let bassTempo = 250;
 // Attack time for a note (in seconds)
 const ATTACK = 0.1;
 // Release time for a note (in seconds)
@@ -82,12 +87,12 @@ var commands = {
   },
   'Kick Beat Down': function(){
     console.log("Synth Beat Down By 10");
-    drumTempo += 125;
+    kickTempo += 125;
     document.getElementById("myKickRange").value -= "10";
   },
   'Kick Beat Up': function(){
     console.log("Synth Beat Up By 10");
-    drumTempo -= 125;
+    kickTempo -= 125;
     document.getElementById("myKickRange").value += "10";
   },
   'Cymbals off': function(){
@@ -231,6 +236,13 @@ function playNote() {
   setTimeout(playNote, noteTempo);
 }
 
+function playKick() {
+  let frequency = frequencies[Math.floor(Math.random() * frequencies.length)];
+  kick.frequency = frequency;
+  kick.play();
+  setTimeout(playKick, kickTempo);
+}
+
 // playDrum()
 //
 // Checks the string representing the drums for the current beat
@@ -241,8 +253,7 @@ function playDrum() {
 
   // If there's an 'x' in there, play the kick
   if (symbols.includes('x')) {
-    kick.play();
-    setTimeout(playDrum, drumTempo);
+    playKick();
   }
   // If there's an '*' in there, play the cymbals
   if (symbols.includes('*')) {
