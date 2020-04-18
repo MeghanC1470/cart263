@@ -86,9 +86,17 @@ html, body{
 p{
   font-size: 50px;
   font-weight: bold;
-  background: linear-gradient(to right, #7927b2, #fb3182);
+  background-color: #7927b2;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  max-width: 350px;
+  text-transform: uppercase;
+  line-height: .77;
+}
+h3{
+  font-size: 50px;
+  font-weight: bold;
+  background-color: TBD;
   max-width: 350px;
   text-transform: uppercase;
   line-height: .77;
