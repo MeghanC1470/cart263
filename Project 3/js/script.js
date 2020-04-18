@@ -47,7 +47,7 @@ var commands = {
   'Start': function(){
     console.log("Starting Beat");
     synthInterval = setTimeout(playNote, noteTempo);
-    setInterval(playDrum, drumTempo);
+    setTimeout(playDrum, drumTempo);
   },
   'Melody off': function(){
     console.log("Synth Off");
@@ -263,6 +263,7 @@ function playDrum() {
   }
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
+  setTimeout(playDrum, drumTempo);
 }
 
 // draw()
