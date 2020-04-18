@@ -122,6 +122,20 @@ var commands = {
     console.log("Bass off");
     bass.volume = 0
   },
+  'Bass Beat Down': function(){
+    console.log("Bass Beat Down By 10");
+    drumTempo += 125;
+    var x = document.getElementById("myBassRange");
+    var newValue = parseInt(x.value) - 10;
+    document.getElementById("myBassRange").value = newValue;
+  },
+  'Bass Beat Up': function(){
+   console.log("Bass Beat Up By 10");
+   drumTempo -= 125;
+   var x = document.getElementById("myBassRange");
+   var newValue = parseInt(x.value) + 10;
+   document.getElementById("myBassRange").value = newValue;
+ },
   'Stop': function(){
     console.log("Everything is off");
     synth.volume = 0
@@ -228,19 +242,24 @@ function playDrum() {
   // If there's an 'x' in there, play the kick
   if (symbols.includes('x')) {
     kick.play();
+    setTimeout(playDrum, drumTempo);
   }
   // If there's an '*' in there, play the cymbals
   if (symbols.includes('*')) {
     cymbals.play();
+    setTimeout(playDrum, drumTempo);
   }
   if (symbols.includes('a')) {
     drums.play();
+    setTimeout(playDrum, drumTempo);
   }
   if (symbols.includes("o")) {
     guitar.play();
+    setTimeout(playDrum, drumTempo);
   }
   if (symbols.includes("u")) {
     bass.play();
+    setTimeout(playDrum, drumTempo);
   }
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
