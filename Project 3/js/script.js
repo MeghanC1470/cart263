@@ -16,7 +16,7 @@ let kickTempo = 250;
 let cymbalTempo = 250;
 let drumsTempo = 250;
 let guitarTempo = 250;
-let bassTempo = 250;
+let bassTempo = 1000;
 // Attack time for a note (in seconds)
 const ATTACK = 0.1;
 // Release time for a note (in seconds)
@@ -43,7 +43,7 @@ let bass
 // Each array element is one beat and has a string with each
 // drum to play for that beat
 // x = kick, o = snare, * = cymbals
-let pattern = ['uax', '*u', '*x', 'abou', 'x', 'x', 'aox', '*', 'b'];
+let pattern = ['uax', '*u', '*x', 'abou', 'x', 'xu', 'aox', '*u', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
 
@@ -55,6 +55,7 @@ var commands = {
     synthInterval = setTimeout(playNote, noteTempo);
     setTimeout(playDrum, drumTempo);
     setTimeout(playKick, kickTempo);
+    setTimeout(playBass, bassTempo);
   },
   'Melody off': function(){
     console.log("Synth Off");
@@ -135,14 +136,14 @@ var commands = {
   },
   'Bass Beat Down': function(){
     console.log("Bass Beat Down By 10");
-    drumTempo += 125;
+    bassTempo += 200;
     var x = document.getElementById("myBassRange");
     var newValue = parseInt(x.value) - 10;
     document.getElementById("myBassRange").value = newValue;
   },
   'Bass Beat Up': function(){
    console.log("Bass Beat Up By 10");
-   drumTempo -= 125;
+   bassTempo -= 200;
    var x = document.getElementById("myBassRange");
    var newValue = parseInt(x.value) + 10;
    document.getElementById("myBassRange").value = newValue;
@@ -247,6 +248,13 @@ function playKick() {
   }
 }
 
+function playBass() {
+  let symbols = pattern[beat];
+  if (symbols.includes('u')) {
+    bass.play();
+  setTimeout(playBass, bassTempo);
+  }
+}
 // playDrum()
 //
 // Checks the string representing the drums for the current beat
