@@ -291,6 +291,7 @@ function playKick() {
   if (symbols.includes('x')) {
     kick.play();
     setTimeout(playKick, kickTempo);
+    console.log("we also be playin");
   }
 }
 
@@ -298,6 +299,7 @@ function playCymbals() {
   if (symbols.includes('*')) {
     cymbals.play();
     setTimeout(playCymbals, cymbalsTempo);
+    console.log("we be playin");
   }
 }
 
@@ -328,7 +330,6 @@ function playBass() {
 function playDrum() {
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
-  setTimeout(playDrum, drumTempo);
 }
 
 // draw()
