@@ -59,8 +59,8 @@ if (annyang) {
       setTimeout(playKick, kickTempo);
       setTimeout(playCymbals, cymbalsTempo);
       setTimeout(playDrums, drumsTempo);
-      setTimeout(playBass, bassTempo);
       setTimeout(playGuitar, guitarTempo);
+      setTimeout(playBass, bassTempo);
     },
     'Melody off': function() {
       console.log("Synth Off");
@@ -224,6 +224,15 @@ if (annyang) {
 
 $(document).ready(setup);
 
+function preload() {
+  document.getElementById("myMelodyRange").disabled = true;
+  document.getElementById("myKickRange").disabled = true;
+  document.getElementById("myCymbalsRange").disabled = true;
+  document.getElementById("myDrumsRange").disabled = true;
+  document.getElementById("myGuitarRange").disabled = true;
+  document.getElementById("myBassRange").disabled = true;
+}
+
 function setup() {
   // Create the synth
   synth = new Pizzicato.Sound({
@@ -331,6 +340,7 @@ function playDrum() {
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
 }
+
 
 // draw()
 //
