@@ -1,14 +1,12 @@
 /*********************************************
 
 Here is a description of any special CSS used.
-In this case it's just padding and margin to 0
-so the canvas is flush with the top left corner.
+Here is where the sliders are set up and the background is
+created.
+Slider Format came from W3BSchools: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+Bakground Format came from 1st Web Designer: https://1stwebdesigner.com/15-css-background-effects/
 
 **********************************************/
-@font-face {
-  font-family: Blacksword;
-  src: url(assets/font/Blacksword.otf);
-}
 
 .slidecontainer {
   width: 45%;
@@ -54,7 +52,7 @@ so the canvas is flush with the top left corner.
   /* Slider handle height */
   border-radius: 50%;
   background: #0000A0;
-  /* Green background */
+  /* Dark Blue background */
   cursor: pointer;
   /* Cursor on hover */
 }
@@ -66,36 +64,31 @@ so the canvas is flush with the top left corner.
   /* Slider handle height */
   border-radius: 50%;
   background: #0000A0;
-  /* Green background */
+  /* Dark Blue background */
   cursor: pointer;
   /* Cursor on hover */
 }
 
-body {
-  margin: 0;
-  overflow: hidden;
-}
+/* The Gradient Background */
 
-.background {
-  width: 100vw;
+html, body {
+  /*Set the height and width of the body */
   height: 100vh;
-  background: #3E1E68;
+  width: 100vw;
+  /*Create a gradient using two colors and stating in what direction
+  the colors will be going to from the first color to the second */
+  background: linear-gradient(to bottom, #7927b2, #fb3182);
+  /* Display the text within the middle of the screen */
+  display: flex;
+  /* Align objects with the center */
+  align-items: center;
 }
 
 * {
-  padding: 0;
+  /* The space between the text */
   margin: 0;
-  box-sizing: border-box;
+  /* The font that will be used if BlackSword isn't being used */
   font-family: 'Verdana', sans-serif;
-}
-
-html, body {
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(to bottom, #7927b2, #fb3182);
-  display: flex;
-  justify-content: left;
-  align-items: center;
 }
 
 p {
@@ -104,20 +97,10 @@ p {
   background-color: #0000A0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  max-width: 350px;
-  text-transform: uppercase;
   line-height: 1.5;
 }
 
 h3 {
   font-size: 60px;
-  font-weight: bold;
-  background-color: TBD;
-  max-width: 350px;
   text-transform: uppercase;
-  line-height: 1;
-}
-
-h1 {
-  font-size: 0.5px line-height: 1;
 }

@@ -13,12 +13,12 @@ play music tracks at certain speeds
 // Create one note
 let noteTempo = 850;
 // Create beats for each time of sound
-let drumTempo = 250;
-let kickTempo = 100;
-let cymbalsTempo = 250;
-let drumsTempo = 200;
-let guitarTempo = 250;
-let bassTempo = 1000;
+let beatTempo = 850;
+let kickTempo = 850;
+let cymbalsTempo = 850;
+let drumsTempo = 850;
+let guitarTempo = 850;
+let bassTempo = 850;
 // Attack time for a note (in seconds)
 const ATTACK = 0.1;
 // Release time for a note (in seconds)
@@ -38,13 +38,14 @@ let synthInterval;
 let kick;
 let cymbals;
 let drums;
-let guitar
-let bass
+let guitar;
+let bass;
 // Our drum pattern
 // Each array element is one beat and has a string with each
 // drum to play for that beat
-// x = kick, * = cymbals,
-let pattern = ['uax', '*u', '*x', 'abou', 'x', 'xu', 'aox', '*u', 'b'];
+// x = kick, * = cymbals, a = drums, o = guitar, u = bass
+let pattern = ['uaxo*', '*u', '*x', 'abou', '*x', 'xu', 'aox', '*u', 'b'];
+
 // Which beat of the pattern we're at right now
 let beat = 0;
 // When a symbol is called on the pattern, it will follow the beat
@@ -61,7 +62,7 @@ if (annyang) {
       console.log("Starting Beat");
   // setTimeout will allow a later command to alter a delay or enhance the speed of the tracks
       synthInterval = setTimeout(playNote, noteTempo);
-      setTimeout(playDrum, drumTempo);
+      setTimeout(playBeat, beatTempo);
       setTimeout(playKick, kickTempo);
       setTimeout(playCymbals, cymbalsTempo);
       setTimeout(playDrums, drumsTempo);
@@ -71,12 +72,12 @@ if (annyang) {
   //'Melody off' will turn of the volume of the Melody track
     'Melody off': function() {
       console.log("Synth Off");
-      synth.volume = 0
+      synth.volume = 0;
     },
   //'Melody on' will turn only the Melody track back on
     'Melody on': function() {
       console.log("Synth On");
-      synth.volume = 1
+      synth.volume = 1;
     },
   //'Melody Beat Down' will slow the tempo of the Melody track
     'Melody Beat Down': function() {
@@ -105,53 +106,53 @@ if (annyang) {
     },
     'Kick on': function() {
       console.log("Kick On");
-      kick.volume = 1
+      kick.volume = 1;
     },
     'Kick Beat Down': function() {
       console.log("Kick Beat Down By 10");
-      kickTempo += 10;
+      kickTempo += 65;
       var x = document.getElementById("myKickRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myKickRange").value = newValue;
     },
     'Kick Beat Up': function() {
       console.log("Kick Beat Up By 10");
-      kickTempo -= 10;
+      kickTempo -= 65;
       var x = document.getElementById("myKickRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myKickRange").value = newValue;
     },
-  //'Cymbals off' turns off the volume of the Kick Track
-    'Cymbal off': function() {
+  //'Cymbals off' turns off the volume of the Cymbals Track
+    'Cymbals off': function() {
       console.log("Cymbals Off");
-      cymbals.volume = 0
+      cymbals.volume = 0;
     },
-    'Cymbal on': function() {
+    'Cymbals on': function() {
       console.log("Cymbals On");
-      cymbals.volume = 1
+      cymbals.volume = 1;
     },
-    'Cymbal Beat Down': function() {
+    'Cymbals Beat Down': function() {
       console.log("Cymbals Beat Down By 10");
-      cymbalsTempo += 15;
+      cymbalsTempo += 85;
       var x = document.getElementById("myCymbalsRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myCymbalsRange").value = newValue;
     },
-    'Cymbal Beat Up': function() {
+    'Cymbals Beat Up': function() {
       console.log("Cymbals Beat Up By 10");
-      cymbalsTempo -= 15;
+      cymbalsTempo -= 85;
       var x = document.getElementById("myCymbalsRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myCymbalsRange").value = newValue;
     },
-  //'Kick off' turns off the volume of the Kick Track
+  //'Drums off' turns off the volume of the Drums Track
     'Drums off': function() {
       console.log("Drums off");
-      drums.volume = 0
+      drums.volume = 0;
     },
     'Drums on': function() {
       console.log("Drums on");
-      drums.volume = 1
+      drums.volume = 1;
     },
     'Drums Beat Down': function() {
       console.log("Drums Beat Down By 10");
@@ -167,37 +168,37 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myDrumsRange").value = newValue;
     },
-  //'Kick off' turns off the volume of the Kick Track
+  //'Guitar off' turns off the volume of the Guitar Track
+  'Guitar off': function() {
+    console.log("Guitar off");
+    guitar.volume = 0;
+    },
     'Guitar on': function() {
       console.log("Guitar on");
-      guitar.volume = 1
-    },
-    'Guitar off': function() {
-      console.log("Guitar off");
-      guitar.volume = 0
+      guitar.volume = 1;
     },
     'Guitar Beat Down': function() {
       console.log("Guitar Beat Down By 10");
-      guitarTempo += 20;
+      guitarTempo += 85;
       var x = document.getElementById("myGuitarRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myGuitarRange").value = newValue;
     },
     'Guitar Beat Up': function() {
       console.log("Guitar Beat Up By 10");
-      guitarTempo -= 20;
+      guitarTempo -= 85;
       var x = document.getElementById("myGuitarRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myGuitarRange").value = newValue;
     },
-  //'Kick off' turns off the volume of the Kick Track
-    'Bass on': function() {
-      console.log("Bass on");
-      bass.volume = 1
-    },
+  //'Bass off' turns off the volume of the Bass Track
     'Bass off': function() {
       console.log("Bass off");
-      bass.volume = 0
+      bass.volume = 0;
+    },
+    'Bass on': function() {
+      console.log("Bass on");
+      bass.volume = 1;
     },
     'Bass Beat Down': function() {
       console.log("Bass Beat Down By 10");
@@ -213,23 +214,25 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myBassRange").value = newValue;
     },
+  //'Stop' will turn off the volume of all tracks
     'Stop': function() {
       console.log("Everything is off");
-      synth.volume = 0
-      kick.volume = 0
-      cymbals.volume = 0
-      drums.volume = 0
-      guitar.volume = 0
-      bass.volume = 0
+      synth.volume = 0;
+      kick.volume = 0;
+      cymbals.volume = 0;
+      drums.volume = 0;
+      guitar.volume = 0;
+      bass.volume = 0;
     },
+  //'Resume' will continue the volume of all the tracks
     'Resume': function() {
       console.log("Everything is on");
-      synth.volume = 1
-      kick.volume = 1
-      cymbals.volume = 1
-      drums.volume = 1
-      guitar.volume = 1
-      bass.volume = 1
+      synth.volume = 1;
+      kick.volume = 1;
+      cymbals.volume = 1;
+      drums.volume = 1;
+      guitar.volume = 1;
+      bass.volume = 1;
     }
   };
 
@@ -242,6 +245,10 @@ if (annyang) {
 
 $(document).ready(setup);
 
+// function preload
+//
+// In this case, function preload will turn off the interactability of the sliders
+// they are only meant to show how far someone can go on the slider.
 function preload() {
   document.getElementById("myMelodyRange").disabled = true;
   document.getElementById("myKickRange").disabled = true;
@@ -251,6 +258,9 @@ function preload() {
   document.getElementById("myBassRange").disabled = true;
 }
 
+// function setup
+//
+// Will set up the wav files for the sounds that will be used
 function setup() {
   // Create the synth
   synth = new Pizzicato.Sound({
@@ -263,7 +273,7 @@ function setup() {
     }
   });
 
-  // Load the three drum sounds as wav files
+  // Load the sounds as wav files
   kick = new Pizzicato.Sound({
     source: 'file',
     options: {
@@ -288,7 +298,7 @@ function setup() {
   guitar = new Pizzicato.Sound({
     source: 'file',
     options: {
-      path: 'assets/sounds/electricguitar.wav'
+      path: 'assets/sounds/guitarstring.wav'
     }
   });
 
@@ -303,7 +313,7 @@ function setup() {
 
 // playNote
 //
-// Chooses a random frequency and assigns it to the synth
+// Chooses a random frequency from the array and assigns it to the synth
 function playNote() {
   // Pick a random frequency from the array
   let frequency = frequencies[Math.floor(Math.random() * frequencies.length)];
@@ -311,25 +321,32 @@ function playNote() {
   synth.frequency = frequency;
   // If it's not already playing, play the synth
   synth.play();
+  // Set a delay that can be altered using annyang commands
   setTimeout(playNote, noteTempo);
 }
 
+// playKick
+//
+// Assigns a sound to a symbol, along with a delay
 function playKick() {
+  //Assign the symbol
   if (symbols.includes('x')) {
+  //When the symbol is called, play the sound
     kick.play();
+  // Set a delay that can be altered using annyang commands
     setTimeout(playKick, kickTempo);
-    console.log("we also be playin");
   }
 }
 
+// playCymbals
 function playCymbals() {
-  if (symbols.includes('*')) {
-    cymbals.play();
-    setTimeout(playCymbals, cymbalsTempo);
-    console.log("we be playin");
+    if (symbols.includes('*')) {
+      cymbals.play();
+      setTimeout(playCymbals, cymbalsTempo);
+    }
   }
-}
 
+// playDrums
 function playDrums() {
   if (symbols.includes('a')) {
     drums.play();
@@ -337,6 +354,7 @@ function playDrums() {
   }
 }
 
+// playGuitar
 function playGuitar() {
   if (symbols.includes("o")) {
     guitar.play();
@@ -344,17 +362,18 @@ function playGuitar() {
   }
 }
 
+// playBass
 function playBass() {
   if (symbols.includes('u')) {
     bass.play();
     setTimeout(playBass, bassTempo);
   }
 }
-// playDrum()
+// playBeat()
 //
 // Checks the string representing the drums for the current beat
 // and plays the appropriate sounds
-function playDrum() {
+function playBeat() {
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
 }
