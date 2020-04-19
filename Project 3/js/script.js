@@ -8,8 +8,9 @@ Meghan Cullen
 GOAL: CREATE A SONG FROM A JUMBLE OF SOUNDS THROUGH VOICE COMMANDS AND BUTTONS
 
 ******************/
+
 // Time for one note
-let noteTempo = 500;
+let noteTempo = 1000;
 // Time for one beat
 let drumTempo = 250;
 let kickTempo = 250;
@@ -35,7 +36,7 @@ let synth;
 let synthInterval;
 // The sound files
 let kick;
-let cymbals;
+let cymbal;
 let drums;
 let guitar
 let bass
@@ -46,6 +47,7 @@ let bass
 let pattern = ['uax', '*u', '*x', 'abou', 'x', 'xu', 'aox', '*u', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
+let symbols = pattern[beat];
 
 if (annyang) {
 //Let's define a command.
@@ -55,6 +57,8 @@ var commands = {
     synthInterval = setTimeout(playNote, noteTempo);
     setTimeout(playDrum, drumTempo);
     setTimeout(playKick, kickTempo);
+    setTimeout(playCymbal, cymbalTempo);
+    setTimeout(playDrums, drumsTempo);
     setTimeout(playBass, bassTempo);
   },
   'Melody off': function(){
@@ -104,11 +108,25 @@ var commands = {
   },
   'Cymbals off': function(){
     console.log("Cymbals Off");
-    cymbals.volume = 0
+    cymbal.volume = 0
   },
   'Cymbals on': function(){
     console.log("Cymbals On");
-    cymbals.volume = 1
+    cymbal.volume = 1
+  },
+  'Cymbals Beat Down': function(){
+    console.log("Cymbals Beat Down By 10");
+    cymbalTempo += 15;
+    var x = document.getElementById("myCymbalsRange");
+    var newValue = parseInt(x.value) - 10;
+    document.getElementById("myCymbalsRange").value = newValue;
+  },
+  'Cymbals Beat Up': function(){
+    console.log("Cymbals Beat Up By 10");
+    cymbalTempo -= 15;
+    var x = document.getElementById("myCymbalsRange");
+    var newValue = parseInt(x.value) + 10;
+    document.getElementById("myCymbalsRange").value = newValue;
   },
   'Drums on': function(){
     console.log("Drums on");
@@ -117,6 +135,20 @@ var commands = {
   'Drums off': function(){
     console.log("Drums off");
     drums.volume = 0
+  },
+  'Drums Beat Down': function(){
+  console.log("Drums Beat Down By 10");
+  drumsTempo += 1;
+  var x = document.getElementById("myDrumsRange");
+  var newValue = parseInt(x.value) - 10;
+  document.getElementById("myDrumsRange").value = newValue;
+  },
+  'Drums Beat Up': function(){
+  console.log("Drums Beat Up By 10");
+  drumsTempo -= 1;
+  var x = document.getElementById("myDrumsRange");
+  var newValue = parseInt(x.value) + 10;
+  document.getElementById("myDrumsRange").value = newValue;
   },
   'Guitar on': function(){
     console.log("Guitar on");
@@ -152,7 +184,7 @@ var commands = {
     console.log("Everything is off");
     synth.volume = 0
     kick.volume = 0
-    cymbals.volume = 0
+    cymbal.volume = 0
     drums.volume = 0
     guitar.volume = 0
     bass.volume = 0
@@ -161,7 +193,7 @@ var commands = {
     console.log("Everything is on");
     synth.volume = 1
     kick.volume = 1
-    cymbals.volume = 1
+    cymbal.volume = 1
     drums.volume = 1
     guitar.volume = 1
     bass.volume = 1
@@ -197,7 +229,7 @@ function setup() {
     }
   });
 
-  cymbals = new Pizzicato.Sound({
+  cymbal = new Pizzicato.Sound({
     source: 'file',
     options: {
       path: 'assets/sounds/cymbals.wav'
@@ -241,15 +273,27 @@ function playNote() {
 }
 
 function playKick() {
-  let symbols = pattern[beat];
   if (symbols.includes('x')) {
     kick.play();
   setTimeout(playKick, kickTempo);
   }
 }
 
+function playCymbal() {
+  if (symbols.includes('*')) {
+    cymbal.play();
+  setTimeout(playCymbal, cymbalTempo);
+  }
+}
+
+function playDrums() {
+  if (symbols.includes('a')) {
+    drums.play();
+  setTimeout(playDrums, drumsTempo);
+  }
+}
+
 function playBass() {
-  let symbols = pattern[beat];
   if (symbols.includes('u')) {
     bass.play();
   setTimeout(playBass, bassTempo);
@@ -264,24 +308,15 @@ function playDrum() {
   //let symbols = pattern[beat];
 
   // If there's an 'x' in there, play the kick
-  if (symbols.includes('x')) {
-    kick.play();
-  }
+
   // If there's an '*' in there, play the cymbals
-  if (symbols.includes('*')) {
-    cymbals.play();
-    setTimeout(playDrum, drumTempo);
-  }
-  if (symbols.includes('a')) {
-    drums.play();
-    setTimeout(playDrum, drumTempo);
-  }
+
+  //if (symbols.includes('a')) {
+  //  drums.play();
+  //  setTimeout(playDrum, drumTempo);
+//  }
   if (symbols.includes("o")) {
     guitar.play();
-    setTimeout(playDrum, drumTempo);
-  }
-  if (symbols.includes("u")) {
-    bass.play();
     setTimeout(playDrum, drumTempo);
   }
   // Advance the pattern by a beat
