@@ -159,6 +159,20 @@ if (annyang) {
       console.log("Guitar off");
       guitar.volume = 0
     },
+    'Guitar Beat Down': function() {
+      console.log("Guitar Beat Down By 10");
+      guitarTempo += 20;
+      var x = document.getElementById("myGuitarRange");
+      var newValue = parseInt(x.value) - 10;
+      document.getElementById("myGuitarRange").value = newValue;
+    },
+    'Guitar Beat Up': function() {
+      console.log("Guitar Beat Up By 10");
+      guitarTempo -= 20;
+      var x = document.getElementById("myGuitarRange");
+      var newValue = parseInt(x.value) + 10;
+      document.getElementById("myGuitarRange").value = newValue;
+    },
     'Bass on': function() {
       console.log("Bass on");
       bass.volume = 1
