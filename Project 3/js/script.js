@@ -88,14 +88,18 @@ var commands = {
   },
   'Kick Beat Down': function(){
     console.log("Synth Beat Down By 10");
-    function playKick;
+    playKick();
     kickTempo += 125;
-    document.getElementById("myKickRange").value -= "10";
+    var x = document.getElementById("myKickRange");
+    var newValue = parseInt(x.value) - 10;
+    document.getElementById("myKickRange").value = newValue;
   },
   'Kick Beat Up': function(){
     console.log("Synth Beat Up By 10");
     kickTempo -= 125;
-    document.getElementById("myKickRange").value += "10";
+    var x = document.getElementById("myKickRange");
+    var newValue = parseInt(x.value) + 10;
+    document.getElementById("myKickRange").value = newValue;
   },
   'Cymbals off': function(){
     console.log("Cymbals Off");
@@ -237,7 +241,7 @@ function playNote() {
 
 function playKick() {
   setTimeout(playKick, kickTempo);
-  console.log("Playing")
+  console.log("Playing");
 }
 
 // playDrum()
