@@ -50,162 +50,162 @@ let beat = 0;
 let symbols = pattern[beat];
 
 if (annyang) {
-//Let's define a command.
-var commands = {
-  'Start': function(){
-    console.log("Starting Beat");
-    synthInterval = setTimeout(playNote, noteTempo);
-    setTimeout(playDrum, drumTempo);
-    setTimeout(playKick, kickTempo);
-    setTimeout(playCymbals, cymbalsTempo);
-    setTimeout(playDrums, drumsTempo);
-    setTimeout(playBass, bassTempo);
-    setTimeout(playGuitar, guitarTempo);
-  },
-  'Melody off': function(){
-    console.log("Synth Off");
-    synth.volume = 0
-  },
-  'Melody on': function(){
-    console.log("Synth On");
-    synth.volume = 1
-  },
-  'Melody Beat Down': function(){
-    console.log("Synth Beat Down By 10");
-    noteTempo += 85;
-    var x = document.getElementById("myMelodyRange");
-    var newValue = parseInt(x.value) - 10;
-    document.getElementById("myMelodyRange").value = newValue;
-  },
-  'Melody Beat Up': function(){
-   console.log("Synth Beat Up By 10");
-   noteTempo -= 85;
-   var x = document.getElementById("myMelodyRange");
-   var newValue = parseInt(x.value) + 10;
-   document.getElementById("myMelodyRange").value = newValue;
- },
-  //Change synth
-  'Kick off': function(){
-    console.log("Kick Off");
-    kick.volume = 0
-  },
-  'Kick on': function(){
-    console.log("Kick On");
-    kick.volume = 1
-  },
-  'Kick Beat Down': function(){
-    console.log("Kick Beat Down By 10");
-    kickTempo += 10;
-    var x = document.getElementById("myKickRange");
-    var newValue = parseInt(x.value) - 10;
-    document.getElementById("myKickRange").value = newValue;
-  },
-  'Kick Beat Up': function(){
-    console.log("Kick Beat Up By 10");
-    kickTempo -= 10;
-    var x = document.getElementById("myKickRange");
-    var newValue = parseInt(x.value) + 10;
-    document.getElementById("myKickRange").value = newValue;
-  },
-  'Cymbals off': function(){
-    console.log("Cymbals Off");
-    cymbals.volume = 0
-  },
-  'Cymbals on': function(){
-    console.log("Cymbals On");
-    cymbals.volume = 1
-  },
-  'Cymbals Beat Down': function(){
-    console.log("Cymbals Beat Down By 10");
-    cymbalsTempo += 15;
-    var x = document.getElementById("myCymbalsRange");
-    var newValue = parseInt(x.value) - 10;
-    document.getElementById("myCymbalsRange").value = newValue;
-  },
-  'Cymbals Beat Up': function(){
-    console.log("Cymbals Beat Up By 10");
-    cymbalsTempo -= 15;
-    var x = document.getElementById("myCymbalsRange");
-    var newValue = parseInt(x.value) + 10;
-    document.getElementById("myCymbalsRange").value = newValue;
-  },
-  'Drums on': function(){
-    console.log("Drums on");
-    drums.volume = 1
-  },
-  'Drums off': function(){
-    console.log("Drums off");
-    drums.volume = 0
-  },
-  'Drums Beat Down': function(){
-  console.log("Drums Beat Down By 10");
-  drumsTempo += 20;
-  var x = document.getElementById("myDrumsRange");
-  var newValue = parseInt(x.value) - 10;
-  document.getElementById("myDrumsRange").value = newValue;
-  },
-  'Drums Beat Up': function(){
-  console.log("Drums Beat Up By 10");
-  drumsTempo -= 20;
-  var x = document.getElementById("myDrumsRange");
-  var newValue = parseInt(x.value) + 10;
-  document.getElementById("myDrumsRange").value = newValue;
-  },
-  'Guitar on': function(){
-    console.log("Guitar on");
-    guitar.volume = 1
-  },
-  'Guitar off': function(){
-    console.log("Guitar off");
-    guitar.volume = 0
-  },
-  'Bass on': function(){
-    console.log("Bass on");
-    bass.volume = 1
-  },
-  'Bass off': function(){
-    console.log("Bass off");
-    bass.volume = 0
-  },
-  'Bass Beat Down': function(){
-    console.log("Bass Beat Down By 10");
-    bassTempo += 200;
-    var x = document.getElementById("myBassRange");
-    var newValue = parseInt(x.value) - 10;
-    document.getElementById("myBassRange").value = newValue;
-  },
-  'Bass Beat Up': function(){
-   console.log("Bass Beat Up By 10");
-   bassTempo -= 200;
-   var x = document.getElementById("myBassRange");
-   var newValue = parseInt(x.value) + 10;
-   document.getElementById("myBassRange").value = newValue;
- },
-  'Stop': function(){
-    console.log("Everything is off");
-    synth.volume = 0
-    kick.volume = 0
-    cymbals.volume = 0
-    drums.volume = 0
-    guitar.volume = 0
-    bass.volume = 0
-  },
-  'Resume': function(){
-    console.log("Everything is on");
-    synth.volume = 1
-    kick.volume = 1
-    cymbals.volume = 1
-    drums.volume = 1
-    guitar.volume = 1
-    bass.volume = 1
-  }
-};
+  //Let's define a command.
+  var commands = {
+    'Start': function() {
+      console.log("Starting Beat");
+      synthInterval = setTimeout(playNote, noteTempo);
+      setTimeout(playDrum, drumTempo);
+      setTimeout(playKick, kickTempo);
+      setTimeout(playCymbals, cymbalsTempo);
+      setTimeout(playDrums, drumsTempo);
+      setTimeout(playBass, bassTempo);
+      setTimeout(playGuitar, guitarTempo);
+    },
+    'Melody off': function() {
+      console.log("Synth Off");
+      synth.volume = 0
+    },
+    'Melody on': function() {
+      console.log("Synth On");
+      synth.volume = 1
+    },
+    'Melody Beat Down': function() {
+      console.log("Synth Beat Down By 10");
+      noteTempo += 85;
+      var x = document.getElementById("myMelodyRange");
+      var newValue = parseInt(x.value) - 10;
+      document.getElementById("myMelodyRange").value = newValue;
+    },
+    'Melody Beat Up': function() {
+      console.log("Synth Beat Up By 10");
+      noteTempo -= 85;
+      var x = document.getElementById("myMelodyRange");
+      var newValue = parseInt(x.value) + 10;
+      document.getElementById("myMelodyRange").value = newValue;
+    },
+    //Change synth
+    'Kick off': function() {
+      console.log("Kick Off");
+      kick.volume = 0
+    },
+    'Kick on': function() {
+      console.log("Kick On");
+      kick.volume = 1
+    },
+    'Kick Beat Down': function() {
+      console.log("Kick Beat Down By 10");
+      kickTempo += 10;
+      var x = document.getElementById("myKickRange");
+      var newValue = parseInt(x.value) - 10;
+      document.getElementById("myKickRange").value = newValue;
+    },
+    'Kick Beat Up': function() {
+      console.log("Kick Beat Up By 10");
+      kickTempo -= 10;
+      var x = document.getElementById("myKickRange");
+      var newValue = parseInt(x.value) + 10;
+      document.getElementById("myKickRange").value = newValue;
+    },
+    'Cymbals off': function() {
+      console.log("Cymbals Off");
+      cymbals.volume = 0
+    },
+    'Cymbals on': function() {
+      console.log("Cymbals On");
+      cymbals.volume = 1
+    },
+    'Cymbals Beat Down': function() {
+      console.log("Cymbals Beat Down By 10");
+      cymbalsTempo += 15;
+      var x = document.getElementById("myCymbalsRange");
+      var newValue = parseInt(x.value) - 10;
+      document.getElementById("myCymbalsRange").value = newValue;
+    },
+    'Cymbals Beat Up': function() {
+      console.log("Cymbals Beat Up By 10");
+      cymbalsTempo -= 15;
+      var x = document.getElementById("myCymbalsRange");
+      var newValue = parseInt(x.value) + 10;
+      document.getElementById("myCymbalsRange").value = newValue;
+    },
+    'Drums on': function() {
+      console.log("Drums on");
+      drums.volume = 1
+    },
+    'Drums off': function() {
+      console.log("Drums off");
+      drums.volume = 0
+    },
+    'Drums Beat Down': function() {
+      console.log("Drums Beat Down By 10");
+      drumsTempo += 20;
+      var x = document.getElementById("myDrumsRange");
+      var newValue = parseInt(x.value) - 10;
+      document.getElementById("myDrumsRange").value = newValue;
+    },
+    'Drums Beat Up': function() {
+      console.log("Drums Beat Up By 10");
+      drumsTempo -= 20;
+      var x = document.getElementById("myDrumsRange");
+      var newValue = parseInt(x.value) + 10;
+      document.getElementById("myDrumsRange").value = newValue;
+    },
+    'Guitar on': function() {
+      console.log("Guitar on");
+      guitar.volume = 1
+    },
+    'Guitar off': function() {
+      console.log("Guitar off");
+      guitar.volume = 0
+    },
+    'Bass on': function() {
+      console.log("Bass on");
+      bass.volume = 1
+    },
+    'Bass off': function() {
+      console.log("Bass off");
+      bass.volume = 0
+    },
+    'Bass Beat Down': function() {
+      console.log("Bass Beat Down By 10");
+      bassTempo += 200;
+      var x = document.getElementById("myBassRange");
+      var newValue = parseInt(x.value) - 10;
+      document.getElementById("myBassRange").value = newValue;
+    },
+    'Bass Beat Up': function() {
+      console.log("Bass Beat Up By 10");
+      bassTempo -= 200;
+      var x = document.getElementById("myBassRange");
+      var newValue = parseInt(x.value) + 10;
+      document.getElementById("myBassRange").value = newValue;
+    },
+    'Stop': function() {
+      console.log("Everything is off");
+      synth.volume = 0
+      kick.volume = 0
+      cymbals.volume = 0
+      drums.volume = 0
+      guitar.volume = 0
+      bass.volume = 0
+    },
+    'Resume': function() {
+      console.log("Everything is on");
+      synth.volume = 1
+      kick.volume = 1
+      cymbals.volume = 1
+      drums.volume = 1
+      guitar.volume = 1
+      bass.volume = 1
+    }
+  };
 
-//Add our commands to annyang
-annyang.addCommands(commands);
+  //Add our commands to annyang
+  annyang.addCommands(commands);
 
-//Start listening.
-annyang.start();
+  //Start listening.
+  annyang.start();
 };
 
 $(document).ready(setup);
@@ -237,24 +237,24 @@ function setup() {
     }
   });
 
-  drums = new Pizzicato.Sound ({
+  drums = new Pizzicato.Sound({
     source: 'file',
     options: {
-    path: 'assets/sounds/drums.wav'
+      path: 'assets/sounds/drums.wav'
     }
   });
 
-  guitar = new Pizzicato.Sound ({
+  guitar = new Pizzicato.Sound({
     source: 'file',
     options: {
-    path: 'assets/sounds/electricguitar.wav'
+      path: 'assets/sounds/electricguitar.wav'
     }
   });
 
-  bass = new Pizzicato.Sound ({
+  bass = new Pizzicato.Sound({
     source: 'file',
     options: {
-    path: 'assets/sounds/bass.wav'
+      path: 'assets/sounds/bass.wav'
     }
   });
 }
@@ -276,34 +276,35 @@ function playNote() {
 function playKick() {
   if (symbols.includes('x')) {
     kick.play();
-  setTimeout(playKick, kickTempo);
+    setTimeout(playKick, kickTempo);
   }
 }
 
 function playCymbals() {
   if (symbols.includes('*')) {
     cymbals.play();
-  setTimeout(playCymbals, cymbalsTempo);
+    setTimeout(playCymbals, cymbalsTempo);
   }
 }
 
 function playDrums() {
   if (symbols.includes('a')) {
     drums.play();
-  setTimeout(playDrums, drumsTempo);
+    setTimeout(playDrums, drumsTempo);
   }
 }
 
-function playGuitar(){
+function playGuitar() {
   if (symbols.includes("o")) {
     guitar.play();
     setTimeout(playGuitar, guitarTempo);
   }
 }
+
 function playBass() {
   if (symbols.includes('u')) {
     bass.play();
-  setTimeout(playBass, bassTempo);
+    setTimeout(playBass, bassTempo);
   }
 }
 // playDrum()

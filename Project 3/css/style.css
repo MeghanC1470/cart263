@@ -11,46 +11,64 @@ so the canvas is flush with the top left corner.
 }
 
 .slidecontainer {
-  width: 45%; /* Width of the outside container */
+  width: 45%;
+  /* Width of the outside container */
   border-radius: 50%;
 }
 
 /* The slider itself */
 .slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
+  -webkit-appearance: none;
+  /* Override default CSS styles */
   appearance: none;
-  width: 100%; /* Full-width */
-  height: 15px; /* Specified height */
+  width: 100%;
+  /* Full-width */
+  height: 15px;
+  /* Specified height */
   border-radius: 5px;
-  background: #d3d3d3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  background: #d3d3d3;
+  /* Grey background */
+  outline: none;
+  /* Remove outline */
+  opacity: 0.7;
+  /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s;
+  /* 0.2 seconds transition on hover */
   transition: opacity .2s;
 }
 
 /* Mouse-over effects */
 .slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
+  opacity: 1;
+  /* Fully shown on mouse-over */
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
+  /* Override default look */
   appearance: none;
-  width: 30px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
+  width: 30px;
+  /* Set a specific slider handle width */
+  height: 25px;
+  /* Slider handle height */
   border-radius: 50%;
-  background: #0000A0; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  background: #0000A0;
+  /* Green background */
+  cursor: pointer;
+  /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
+  width: 25px;
+  /* Set a specific slider handle width */
+  height: 25px;
+  /* Slider handle height */
   border-radius: 50%;
-  background: #0000A0; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  background: #0000A0;
+  /* Green background */
+  cursor: pointer;
+  /* Cursor on hover */
 }
 
 body {
@@ -64,13 +82,14 @@ body {
   background: #3E1E68;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Verdana', sans-serif;
 }
-html, body{
+
+html, body {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to bottom, #7927b2, #fb3182);
@@ -79,7 +98,7 @@ html, body{
   align-items: center;
 }
 
-p{
+p {
   font-size: 40px;
   font-weight: bold;
   background-color: #0000A0;
@@ -89,7 +108,8 @@ p{
   text-transform: uppercase;
   line-height: 1.5;
 }
-h3{
+
+h3 {
   font-size: 60px;
   font-weight: bold;
   background-color: TBD;
@@ -97,7 +117,7 @@ h3{
   text-transform: uppercase;
   line-height: 1;
 }
-h1{
-  font-size: 0.5px
-  line-height: 1;
+
+h1 {
+  font-size: 0.5px line-height: 1;
 }
