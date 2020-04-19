@@ -60,6 +60,7 @@ var commands = {
     setTimeout(playCymbal, cymbalTempo);
     setTimeout(playDrums, drumsTempo);
     setTimeout(playBass, bassTempo);
+    setTimeout(playGuitar, guitarTempo);
   },
   'Melody off': function(){
     console.log("Synth Off");
@@ -293,6 +294,12 @@ function playDrums() {
   }
 }
 
+function playGuitar(){
+  if (symbols.includes("o")) {
+    guitar.play();
+    setTimeout(playGuitar, guitarTempo);
+  }
+}
 function playBass() {
   if (symbols.includes('u')) {
     bass.play();
@@ -304,21 +311,6 @@ function playBass() {
 // Checks the string representing the drums for the current beat
 // and plays the appropriate sounds
 function playDrum() {
-  // Get the symbols for the current beat in the pattern
-  //let symbols = pattern[beat];
-
-  // If there's an 'x' in there, play the kick
-
-  // If there's an '*' in there, play the cymbals
-
-  //if (symbols.includes('a')) {
-  //  drums.play();
-  //  setTimeout(playDrum, drumTempo);
-//  }
-  if (symbols.includes("o")) {
-    guitar.play();
-    setTimeout(playDrum, drumTempo);
-  }
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
   setTimeout(playDrum, drumTempo);
