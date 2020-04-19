@@ -13,12 +13,12 @@ play music tracks at certain speeds
 // Create one note
 let noteTempo = 850;
 // Create beats for each time of sound
-let beatTempo = 850;
-let kickTempo = 850;
-let cymbalsTempo = 850;
-let drumsTempo = 850;
-let guitarTempo = 850;
-let bassTempo = 850;
+let beatTempo = 750;
+let kickTempo = 650;
+let cymbalsTempo = 550;
+let drumsTempo = 450;
+let guitarTempo = 350;
+let bassTempo = 250;
 // Attack time for a note (in seconds)
 const ATTACK = 0.1;
 // Release time for a note (in seconds)
@@ -57,10 +57,10 @@ let symbols = pattern[beat];
 if (annyang) {
   //Let's define a command.
   var commands = {
-  //'Start' command will begin all the tracks
+    //'Start' command will begin all the tracks
     'Start': function() {
       console.log("Starting Beat");
-  // setTimeout will allow a later command to alter a delay or enhance the speed of the tracks
+      // setTimeout will allow a later command to alter a delay or enhance the speed of the tracks
       synthInterval = setTimeout(playNote, noteTempo);
       setTimeout(playBeat, beatTempo);
       setTimeout(playKick, kickTempo);
@@ -69,41 +69,42 @@ if (annyang) {
       setTimeout(playGuitar, guitarTempo);
       setTimeout(playBass, bassTempo);
     },
-  //'Melody off' will turn of the volume of the Melody track
+    //'Melody off' will turn of the volume of the Melody track
     'Melody off': function() {
       console.log("Synth Off");
       synth.volume = 0;
     },
-  //'Melody on' will turn only the Melody track back on
+    //'Melody on' will turn only the Melody track back on
     'Melody on': function() {
       console.log("Synth On");
       synth.volume = 1;
     },
-  //'Melody Beat Down' will slow the tempo of the Melody track
+    //'Melody Beat Down' will slow the tempo of the Melody track
     'Melody Beat Down': function() {
       console.log("Synth Beat Down By 10");
-      noteTempo += 85;
-  // On the Melody slider, we make it go down by 10 by creating a new newValue
-  // This will allow the slider to not add or subtract 10 each time, which will confuse the slider
+      noteTempo += 75;
+      // On the Melody slider, we make it go down by 10 by creating a new newValue
+      // This will allow the slider to not add or subtract 10 each time, which will confuse the slider
       var x = document.getElementById("myMelodyRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myMelodyRange").value = newValue;
     },
-  //Like 'Melody Beat Down', we increase the tempo of the Melody and make it faster
+    //Like 'Melody Beat Down', we increase the tempo of the Melody and make it faster
     'Melody Beat Up': function() {
       console.log("Synth Beat Up By 10");
-      noteTempo -= 85;
-  //Unlike 'Melody Beat Down', the slider will go up by 10 each time the command is called
+      noteTempo -= 75;
+      //Unlike 'Melody Beat Down', the slider will go up by 10 each time the command is called
       var x = document.getElementById("myMelodyRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myMelodyRange").value = newValue;
     },
-  //The same rules apply to all other tracks
-  //'Kick off' turns off the volume of the Kick Track
+    //The same rules apply to all other tracks
+    //'Kick off' turns off the volume of the Kick Track
     'Kick off': function() {
       console.log("Kick Off");
       kick.volume = 0
     },
+    //'Kick on' will turn only the Kick track back on
     'Kick on': function() {
       console.log("Kick On");
       kick.volume = 1;
@@ -122,99 +123,103 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myKickRange").value = newValue;
     },
-  //'Cymbals off' turns off the volume of the Cymbals Track
+    //'Cymbals off' turns off the volume of the Cymbals Track
     'Cymbals off': function() {
       console.log("Cymbals Off");
       cymbals.volume = 0;
     },
+    //'Cymbals on' will turn only the Cymbals track back on
     'Cymbals on': function() {
       console.log("Cymbals On");
       cymbals.volume = 1;
     },
     'Cymbals Beat Down': function() {
       console.log("Cymbals Beat Down By 10");
-      cymbalsTempo += 85;
+      cymbalsTempo += 55;
       var x = document.getElementById("myCymbalsRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myCymbalsRange").value = newValue;
     },
     'Cymbals Beat Up': function() {
       console.log("Cymbals Beat Up By 10");
-      cymbalsTempo -= 85;
+      cymbalsTempo -= 55;
       var x = document.getElementById("myCymbalsRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myCymbalsRange").value = newValue;
     },
-  //'Drums off' turns off the volume of the Drums Track
+    //'Drums off' turns off the volume of the Drums Track
     'Drums off': function() {
       console.log("Drums off");
       drums.volume = 0;
     },
+    //'Drums on' will turn only the Drum track back on
     'Drums on': function() {
       console.log("Drums on");
       drums.volume = 1;
     },
     'Drums Beat Down': function() {
       console.log("Drums Beat Down By 10");
-      drumsTempo += 20;
+      drumsTempo += 45;
       var x = document.getElementById("myDrumsRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myDrumsRange").value = newValue;
     },
     'Drums Beat Up': function() {
       console.log("Drums Beat Up By 10");
-      drumsTempo -= 20;
+      drumsTempo -= 45;
       var x = document.getElementById("myDrumsRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myDrumsRange").value = newValue;
     },
-  //'Guitar off' turns off the volume of the Guitar Track
-  'Guitar off': function() {
-    console.log("Guitar off");
-    guitar.volume = 0;
+    //'Guitar off' turns off the volume of the Guitar Track
+    'Guitar off': function() {
+      console.log("Guitar off");
+      guitar.volume = 0;
     },
+    //'Guitar on' will turn only the Guitar track back on
     'Guitar on': function() {
       console.log("Guitar on");
       guitar.volume = 1;
     },
     'Guitar Beat Down': function() {
       console.log("Guitar Beat Down By 10");
-      guitarTempo += 85;
+      guitarTempo += 35;
       var x = document.getElementById("myGuitarRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myGuitarRange").value = newValue;
     },
     'Guitar Beat Up': function() {
       console.log("Guitar Beat Up By 10");
-      guitarTempo -= 85;
+      guitarTempo -= 35;
       var x = document.getElementById("myGuitarRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myGuitarRange").value = newValue;
     },
-  //'Bass off' turns off the volume of the Bass Track
+    //'Bass off' turns off the volume of the Bass Track
     'Bass off': function() {
       console.log("Bass off");
       bass.volume = 0;
     },
+    //'Bass on' will turn only the Bass track back on
     'Bass on': function() {
       console.log("Bass on");
       bass.volume = 1;
     },
     'Bass Beat Down': function() {
       console.log("Bass Beat Down By 10");
-      bassTempo += 200;
+      bassTempo += 25;
       var x = document.getElementById("myBassRange");
       var newValue = parseInt(x.value) - 10;
       document.getElementById("myBassRange").value = newValue;
     },
     'Bass Beat Up': function() {
       console.log("Bass Beat Up By 10");
-      bassTempo -= 200;
+      bassTempo -= 25;
       var x = document.getElementById("myBassRange");
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myBassRange").value = newValue;
     },
-  //'Stop' will turn off the volume of all tracks
+    //'Stop' will turn off the volume of all tracks
     'Stop': function() {
       console.log("Everything is off");
       synth.volume = 0;
@@ -224,7 +229,7 @@ if (annyang) {
       guitar.volume = 0;
       bass.volume = 0;
     },
-  //'Resume' will continue the volume of all the tracks
+    //'Resume' will continue the volume of all the tracks
     'Resume': function() {
       console.log("Everything is on");
       synth.volume = 1;
@@ -331,20 +336,20 @@ function playNote() {
 function playKick() {
   //Assign the symbol
   if (symbols.includes('x')) {
-  //When the symbol is called, play the sound
+    //When the symbol is called, play the sound
     kick.play();
-  // Set a delay that can be altered using annyang commands
+    // Set a delay that can be altered using annyang commands
     setTimeout(playKick, kickTempo);
   }
 }
 
 // playCymbals
 function playCymbals() {
-    if (symbols.includes('*')) {
-      cymbals.play();
-      setTimeout(playCymbals, cymbalsTempo);
-    }
+  if (symbols.includes('*')) {
+    cymbals.play();
+    setTimeout(playCymbals, cymbalsTempo);
   }
+}
 
 // playDrums
 function playDrums() {
@@ -371,16 +376,8 @@ function playBass() {
 }
 // playBeat()
 //
-// Checks the string representing the drums for the current beat
-// and plays the appropriate sounds
+// Checks the string representing the beat for the tracks
 function playBeat() {
   // Advance the pattern by a beat
   beat = (beat + 2) % pattern.length;
 }
-
-
-// draw()
-//
-// Nothing right now. But imagine the possibilities!
-
-function draw() {}

@@ -7,7 +7,6 @@ Slider Format came from W3BSchools: https://www.w3schools.com/howto/howto_js_ran
 Bakground Format came from 1st Web Designer: https://1stwebdesigner.com/15-css-background-effects/
 
 **********************************************/
-
 .slidecontainer {
   width: 45%;
   /* Width of the outside container */
@@ -70,7 +69,6 @@ Bakground Format came from 1st Web Designer: https://1stwebdesigner.com/15-css-b
 }
 
 /* The Gradient Background */
-
 html, body {
   /*Set the height and width of the body */
   height: 100vh;
@@ -91,6 +89,7 @@ html, body {
   font-family: 'Verdana', sans-serif;
 }
 
+/* Font styles for normal text */
 p {
   font-size: 40px;
   font-weight: bold;
@@ -100,6 +99,7 @@ p {
   line-height: 1.5;
 }
 
+/* Font styles for Headline texts */
 h3 {
   font-size: 60px;
   text-transform: uppercase;
