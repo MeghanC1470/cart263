@@ -22,6 +22,7 @@ const ATTACK = 0.1;
 // Release time for a note (in seconds)
 const RELEASE = 0.1;
 
+
 // We need an array of the possible notes to play as frequencies (in Hz)
 // A Major =  A, B, C♯, D, E, F♯, and G♯
 // We can get the frequencies of these notes from THE INTERNET, e.g.
@@ -65,14 +66,14 @@ var commands = {
   },
   'Melody Beat Down': function(){
     console.log("Synth Beat Down By 10");
-    noteTempo += 125;
+    noteTempo += 100;
     var x = document.getElementById("myMelodyRange");
     var newValue = parseInt(x.value) - 10;
     document.getElementById("myMelodyRange").value = newValue;
   },
   'Melody Beat Up': function(){
    console.log("Synth Beat Up By 10");
-   noteTempo -= 125;
+   noteTempo -= 100;
    var x = document.getElementById("myMelodyRange");
    var newValue = parseInt(x.value) + 10;
    document.getElementById("myMelodyRange").value = newValue;
@@ -87,16 +88,15 @@ var commands = {
     kick.volume = 1
   },
   'Kick Beat Down': function(){
-    console.log("Synth Beat Down By 10");
-    playKick();
-    kickTempo += 125;
+    console.log("Kick Beat Down By 10");
+    kickTempo += 15;
     var x = document.getElementById("myKickRange");
     var newValue = parseInt(x.value) - 10;
     document.getElementById("myKickRange").value = newValue;
   },
   'Kick Beat Up': function(){
-    console.log("Synth Beat Up By 10");
-    kickTempo -= 125;
+    console.log("Kick Beat Up By 10");
+    kickTempo -= 15;
     var x = document.getElementById("myKickRange");
     var newValue = parseInt(x.value) + 10;
     document.getElementById("myKickRange").value = newValue;
@@ -240,8 +240,11 @@ function playNote() {
 }
 
 function playKick() {
+  let symbols = pattern[beat];
+  if (symbols.includes('x')) {
+    kick.play();
   setTimeout(playKick, kickTempo);
-  console.log("Playing");
+  }
 }
 
 // playDrum()
@@ -250,7 +253,7 @@ function playKick() {
 // and plays the appropriate sounds
 function playDrum() {
   // Get the symbols for the current beat in the pattern
-  let symbols = pattern[beat];
+  //let symbols = pattern[beat];
 
   // If there's an 'x' in there, play the kick
   if (symbols.includes('x')) {
