@@ -10,12 +10,12 @@ GOAL: CREATE A SONG FROM A JUMBLE OF SOUNDS THROUGH VOICE COMMANDS AND BUTTONS
 ******************/
 
 // Time for one note
-let noteTempo = 1000;
+let noteTempo = 850;
 // Time for one beat
 let drumTempo = 250;
-let kickTempo = 250;
-let cymbalTempo = 250;
-let drumsTempo = 250;
+let kickTempo = 100;
+let cymbalsTempo = 250;
+let drumsTempo = 200;
 let guitarTempo = 250;
 let bassTempo = 1000;
 // Attack time for a note (in seconds)
@@ -36,14 +36,14 @@ let synth;
 let synthInterval;
 // The sound files
 let kick;
-let cymbal;
+let cymbals;
 let drums;
 let guitar
 let bass
 // Our drum pattern
 // Each array element is one beat and has a string with each
 // drum to play for that beat
-// x = kick, o = snare, * = cymbals
+// x = kick, o = snare, * = cymbalss
 let pattern = ['uax', '*u', '*x', 'abou', 'x', 'xu', 'aox', '*u', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
@@ -57,7 +57,7 @@ var commands = {
     synthInterval = setTimeout(playNote, noteTempo);
     setTimeout(playDrum, drumTempo);
     setTimeout(playKick, kickTempo);
-    setTimeout(playCymbal, cymbalTempo);
+    setTimeout(playCymbals, cymbalsTempo);
     setTimeout(playDrums, drumsTempo);
     setTimeout(playBass, bassTempo);
     setTimeout(playGuitar, guitarTempo);
@@ -72,14 +72,14 @@ var commands = {
   },
   'Melody Beat Down': function(){
     console.log("Synth Beat Down By 10");
-    noteTempo += 100;
+    noteTempo += 85;
     var x = document.getElementById("myMelodyRange");
     var newValue = parseInt(x.value) - 10;
     document.getElementById("myMelodyRange").value = newValue;
   },
   'Melody Beat Up': function(){
    console.log("Synth Beat Up By 10");
-   noteTempo -= 100;
+   noteTempo -= 85;
    var x = document.getElementById("myMelodyRange");
    var newValue = parseInt(x.value) + 10;
    document.getElementById("myMelodyRange").value = newValue;
@@ -95,36 +95,36 @@ var commands = {
   },
   'Kick Beat Down': function(){
     console.log("Kick Beat Down By 10");
-    kickTempo += 15;
+    kickTempo += 10;
     var x = document.getElementById("myKickRange");
     var newValue = parseInt(x.value) - 10;
     document.getElementById("myKickRange").value = newValue;
   },
   'Kick Beat Up': function(){
     console.log("Kick Beat Up By 10");
-    kickTempo -= 15;
+    kickTempo -= 10;
     var x = document.getElementById("myKickRange");
     var newValue = parseInt(x.value) + 10;
     document.getElementById("myKickRange").value = newValue;
   },
   'Cymbals off': function(){
     console.log("Cymbals Off");
-    cymbal.volume = 0
+    cymbals.volume = 0
   },
   'Cymbals on': function(){
     console.log("Cymbals On");
-    cymbal.volume = 1
+    cymbals.volume = 1
   },
   'Cymbals Beat Down': function(){
     console.log("Cymbals Beat Down By 10");
-    cymbalTempo += 15;
+    cymbalsTempo += 15;
     var x = document.getElementById("myCymbalsRange");
     var newValue = parseInt(x.value) - 10;
     document.getElementById("myCymbalsRange").value = newValue;
   },
   'Cymbals Beat Up': function(){
     console.log("Cymbals Beat Up By 10");
-    cymbalTempo -= 15;
+    cymbalsTempo -= 15;
     var x = document.getElementById("myCymbalsRange");
     var newValue = parseInt(x.value) + 10;
     document.getElementById("myCymbalsRange").value = newValue;
@@ -139,14 +139,14 @@ var commands = {
   },
   'Drums Beat Down': function(){
   console.log("Drums Beat Down By 10");
-  drumsTempo += 1;
+  drumsTempo += 20;
   var x = document.getElementById("myDrumsRange");
   var newValue = parseInt(x.value) - 10;
   document.getElementById("myDrumsRange").value = newValue;
   },
   'Drums Beat Up': function(){
   console.log("Drums Beat Up By 10");
-  drumsTempo -= 1;
+  drumsTempo -= 20;
   var x = document.getElementById("myDrumsRange");
   var newValue = parseInt(x.value) + 10;
   document.getElementById("myDrumsRange").value = newValue;
@@ -185,7 +185,7 @@ var commands = {
     console.log("Everything is off");
     synth.volume = 0
     kick.volume = 0
-    cymbal.volume = 0
+    cymbals.volume = 0
     drums.volume = 0
     guitar.volume = 0
     bass.volume = 0
@@ -194,7 +194,7 @@ var commands = {
     console.log("Everything is on");
     synth.volume = 1
     kick.volume = 1
-    cymbal.volume = 1
+    cymbals.volume = 1
     drums.volume = 1
     guitar.volume = 1
     bass.volume = 1
@@ -230,7 +230,7 @@ function setup() {
     }
   });
 
-  cymbal = new Pizzicato.Sound({
+  cymbals = new Pizzicato.Sound({
     source: 'file',
     options: {
       path: 'assets/sounds/cymbals.wav'
@@ -280,10 +280,10 @@ function playKick() {
   }
 }
 
-function playCymbal() {
+function playCymbals() {
   if (symbols.includes('*')) {
-    cymbal.play();
-  setTimeout(playCymbal, cymbalTempo);
+    cymbals.play();
+  setTimeout(playCymbals, cymbalsTempo);
   }
 }
 
