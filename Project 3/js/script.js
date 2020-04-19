@@ -42,7 +42,7 @@ let bass
 // Each array element is one beat and has a string with each
 // drum to play for that beat
 // x = kick, o = snare, * = cymbals
-let pattern = ['ua', '*u', '*', 'abou', 'ao', '*', 'b'];
+let pattern = ['uax', '*u', '*x', 'abou', 'x', 'x', 'aox', '*', 'b'];
 // Which beat of the pattern we're at right now
 let beat = 0;
 
@@ -52,7 +52,8 @@ var commands = {
   'Start': function(){
     console.log("Starting Beat");
     synthInterval = setTimeout(playNote, noteTempo);
-    setTimeout(playDrum, drumTempo, playKick);
+    setTimeout(playDrum, drumTempo);
+    setTimeout(playKick, kickTempo);
   },
   'Melody off': function(){
     console.log("Synth Off");
@@ -87,6 +88,7 @@ var commands = {
   },
   'Kick Beat Down': function(){
     console.log("Synth Beat Down By 10");
+    function playKick;
     kickTempo += 125;
     document.getElementById("myKickRange").value -= "10";
   },
@@ -171,9 +173,6 @@ annyang.start();
 $(document).ready(setup);
 
 function setup() {
-
-
-
   // Create the synth
   synth = new Pizzicato.Sound({
     source: 'wave',
@@ -237,9 +236,6 @@ function playNote() {
 }
 
 function playKick() {
-  let frequency = frequencies[Math.floor(Math.random() * frequencies.length)];
-  kick.frequency = frequency;
-  kick.play();
   setTimeout(playKick, kickTempo);
   console.log("Playing")
 }
@@ -253,7 +249,9 @@ function playDrum() {
   let symbols = pattern[beat];
 
   // If there's an 'x' in there, play the kick
-
+  if (symbols.includes('x')) {
+    kick.play();
+  }
   // If there's an '*' in there, play the cymbals
   if (symbols.includes('*')) {
     cymbals.play();
