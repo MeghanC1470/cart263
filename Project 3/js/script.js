@@ -82,6 +82,8 @@ if (annyang) {
     //'Melody Beat Down' will slow the tempo of the Melody track
     'Melody Beat Down': function() {
       console.log("Synth Beat Down By 10");
+      //Based on the Melody's tempo (750), we make the increased note tempo the answer of 750 divded by 10,
+      //as there are 10 levels to the slider. This will prevent it from going into the negative.
       noteTempo += 75;
       // On the Melody slider, we make it go down by 10 by creating a new newValue
       // This will allow the slider to not add or subtract 10 each time, which will confuse the slider
@@ -98,13 +100,12 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myMelodyRange").value = newValue;
     },
-    //The same rules apply to all other tracks
-    //'Kick off' turns off the volume of the Kick Track
+    //The same rules apply to all Commands
+    // Kick Commands
     'Kick off': function() {
       console.log("Kick Off");
       kick.volume = 0
     },
-    //'Kick on' will turn only the Kick track back on
     'Kick on': function() {
       console.log("Kick On");
       kick.volume = 1;
@@ -123,12 +124,11 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myKickRange").value = newValue;
     },
-    //'Cymbals off' turns off the volume of the Cymbals Track
+    //Cymbals Commands
     'Cymbals off': function() {
       console.log("Cymbals Off");
       cymbals.volume = 0;
     },
-    //'Cymbals on' will turn only the Cymbals track back on
     'Cymbals on': function() {
       console.log("Cymbals On");
       cymbals.volume = 1;
@@ -147,12 +147,11 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myCymbalsRange").value = newValue;
     },
-    //'Drums off' turns off the volume of the Drums Track
+    //Drum Commands
     'Drums off': function() {
       console.log("Drums off");
       drums.volume = 0;
     },
-    //'Drums on' will turn only the Drum track back on
     'Drums on': function() {
       console.log("Drums on");
       drums.volume = 1;
@@ -171,12 +170,11 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myDrumsRange").value = newValue;
     },
-    //'Guitar off' turns off the volume of the Guitar Track
+    //Guitar Commands
     'Guitar off': function() {
       console.log("Guitar off");
       guitar.volume = 0;
     },
-    //'Guitar on' will turn only the Guitar track back on
     'Guitar on': function() {
       console.log("Guitar on");
       guitar.volume = 1;
@@ -195,12 +193,11 @@ if (annyang) {
       var newValue = parseInt(x.value) + 10;
       document.getElementById("myGuitarRange").value = newValue;
     },
-    //'Bass off' turns off the volume of the Bass Track
+    //Bass Commands
     'Bass off': function() {
       console.log("Bass off");
       bass.volume = 0;
     },
-    //'Bass on' will turn only the Bass track back on
     'Bass on': function() {
       console.log("Bass on");
       bass.volume = 1;
